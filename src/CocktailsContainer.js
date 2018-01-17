@@ -2,12 +2,18 @@ import React from 'react';
 import CocktailCard from './CocktailCard';
 
 const CocktailsContainer = (props) => {
+  let cocktails = props.cocktails.map((c, i)=> {
+    return(
+      <CocktailCard cocktail={c} key={i}/>
+    );
+  })
 
 
+  console.log('CocktailsContainer', cocktails);
   return(
-    <div className="parent">
+    <div className="parent col-xs-4">
       CocktailsContainer
-      <CocktailCard />
+      { cocktails }
     </div>
   );
 }
