@@ -22,8 +22,7 @@ class App extends Component {
   }
 
   handleClick = (id, e) => {
-    console.log( "from handleClick id", id)
-    console.log( "from handleClick e", e)
+    this.showDrink(id);
   }
 
   showDrink = (id) => {
