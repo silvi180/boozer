@@ -28,6 +28,12 @@ class App extends Component {
           currentCocktail: json[0]
         })
       })
+
+    // fetch('http://localhost:3000/api/v1/ingredients')
+    //   .then(resp => resp.json())
+    //   .then(json => this.setState({
+    //     ingredients: json
+    //   }))
   }
 
   handleClick = (id, e) => {
@@ -55,6 +61,7 @@ class App extends Component {
 
 
   render() {
+    console.log("State", this.state);
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
