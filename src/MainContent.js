@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MainContent = (props) => {
-  console.log("MainContent", props);
+  console.log("MainContent:", props);
 
   // const cocktails = props.ma
   return (
