@@ -10,6 +10,8 @@ class App extends Component {
 
     this.state = {
       cocktails: [],
+      ingredients: [],
+      foundCocktails: [],
       currentCocktail: '',
       searchTerm: ''
     }
@@ -20,7 +22,8 @@ class App extends Component {
       .then(resp => resp.json())
       .then(json => this.setState({
         cocktails: json,
-        currentCocktail: json[0],
+        foundCocktails: json,
+        currentCocktail: json[0]
       }))
   }
 
@@ -35,14 +38,19 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
-    this.setState({
-      searchTerm: e.target.value
-    });
+    this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
+  }
+
+  foundDrink = (s) => {
+    const search = s.toUpperCase();
+    const cocktails = this.state.cocktails.filter( cocktail => cocktail.name.toUpperCase().includes(search) )
+    const ingredients = this.state.ingredients.filter( ingredient => ingredient.name.toUpperCase().includes(search) )
+    const found =  cocktails.concat(ingredients);
+    this.setState( { foundCocktails: found });
   }
 
 
   render() {
-    console.log("App:", this.state.searchTerm);
     return (
       <div className="App">
         <nav className="navbar navbar-default">
@@ -51,7 +59,7 @@ class App extends Component {
               <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
             </div>
 
-              <SearchBar handleSearch={this.handleSearch}/>
+              <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
 
             <ul className="nav navbar-nav navbar-right pull-right">
               <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -60,9 +68,8 @@ class App extends Component {
 
           </div>
         </nav>
-
-        <CocktailsContainer cocktails={this.state.cocktails} handleClick={this.handleClick}/>
-        <MainContent currentCocktail={this.state.currentCocktail}/>
+          <CocktailsContainer cocktails={this.state.foundCocktails} handleClick={this.handleClick} />
+          <MainContent currentCocktail={this.state.currentCocktail}/>
       </div>
     );
   }
