@@ -1,7 +1,6 @@
 import React from 'react';
 
 const SearchBar = (props) => {
-console.log("search", props.searchTerm)
   return (
     <form onChange={props.handleSearch} value={props.searchTerm} className="navbar-form navbar-right" action="/action_page.php">
       <div className="input-group">

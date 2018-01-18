@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MainContent = (props) => {
-  console.log("MainContent:", props);
   let proportions
 
   if (props.currentCocktail.proportions) {
@@ -14,8 +13,6 @@ const MainContent = (props) => {
     })
   }
 
-  console.log("proportions", proportions);
-  // const cocktails = props.ma
   return (
     <div className="col-xs-8">
       <h2>Name: {props.currentCocktail.name}</h2>

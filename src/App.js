@@ -13,8 +13,7 @@ class App extends Component {
       ingredients: [],
       foundCocktails: [],
       currentCocktail: '',
-      searchTerm: '',
-      filteredCocktails: []
+      searchTerm: ''
     }
   }
 
