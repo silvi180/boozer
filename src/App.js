@@ -3,6 +3,7 @@ import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
 import SearchBar from './SearchBar';
+
 class App extends Component {
   constructor() {
     super();
@@ -17,7 +18,8 @@ class App extends Component {
     fetch('http://localhost:3000/api/v1/cocktails')
       .then(resp => resp.json())
       .then(json => this.setState({
-        cocktails: json
+        cocktails: json,
+        currentCocktail: json[0]
       }))
   }
 
