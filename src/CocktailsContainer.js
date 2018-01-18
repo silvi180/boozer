@@ -4,12 +4,12 @@ import CocktailCard from './CocktailCard';
 const CocktailsContainer = (props) => {
   let cocktails = props.cocktails.map((c, i)=> {
     return(
-      <CocktailCard cocktail={c} key={i}/>
+      <CocktailCard cocktail={c} key={i} handleClick={props.handleClick}/>
     );
   })
 
 
-  console.log('CocktailsContainer', cocktails);
+  // console.log('CocktailsContainer:', props.handleClick);
   return(
     <div className="parent col-xs-4">
       CocktailsContainer
