@@ -29,27 +29,27 @@ class App extends Component {
     console.log("App", this.state.cocktails);
     return (
       <div className="App">
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
+        <nav className="navbar navbar-default">
+          <div className="container-fluid">
+            <div className="navbar-header">
               <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
 
             </div>
 
-            <form class="navbar-form navbar-right" action="/action_page.php">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search"/>
-                <div class="input-group-btn">
-                  <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
+            <form className="navbar-form navbar-right" action="/action_page.php">
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="Search"/>
+                <div className="input-group-btn">
+                  <button className="btn btn-default" type="submit">
+                    <i className="glyphicon glyphicon-search"></i>
                   </button>
                 </div>
               </div>
             </form>
 
-            <ul class="nav navbar-nav navbar-right pull-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <ul className="nav navbar-nav navbar-right pull-right">
+              <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="index.html"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
 
           </div>
