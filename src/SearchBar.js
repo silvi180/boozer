@@ -1,9 +1,9 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
 
   return (
-    <form className="navbar-form navbar-right" action="/action_page.php">
+    <form onChange={props.handleSearch} className="navbar-form navbar-right" action="/action_page.php">
       <div className="input-group">
         <input type="text" className="form-control" placeholder="Search"/>
         <div className="input-group-btn">

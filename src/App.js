@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state = {
       cocktails: [],
-      currentCocktail: ''
+      currentCocktail: '',
+      searchTerm: ''
     }
   }
 
@@ -19,7 +20,7 @@ class App extends Component {
       .then(resp => resp.json())
       .then(json => this.setState({
         cocktails: json,
-        currentCocktail: json[0]
+        currentCocktail: json[0],
       }))
   }
 
@@ -33,9 +34,15 @@ class App extends Component {
       .then(json => this.setState({ currentCocktail: json }))
   }
 
+  handleSearch = (e) => {
+    this.setState({
+      searchTerm: e.target.value
+    });
+  }
+
 
   render() {
-    console.log("App:", this.state.cocktails);
+    console.log("App:", this.state.searchTerm);
     return (
       <div className="App">
         <nav className="navbar navbar-default">
@@ -44,11 +51,11 @@ class App extends Component {
               <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
             </div>
 
-              <SearchBar />
+              <SearchBar handleSearch={this.handleSearch}/>
 
             <ul className="nav navbar-nav navbar-right pull-right">
-              <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="index.html"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
 
           </div>
