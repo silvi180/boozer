@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+
 
 .App-header {
   background-color: #222;
@@ -19,6 +17,10 @@ body {
   margin: 0;
 }
 
+.content {
+  margin-top: 100px;
+}
+
 
 /* .main {
   margin-top: 100px;
@@ -27,7 +29,7 @@ body {
 } */
 
 .parent{
-  height: 1000px;
+  height: 700px;
   overflow: scroll;
 }
 

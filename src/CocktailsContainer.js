@@ -12,7 +12,6 @@ const CocktailsContainer = (props) => {
   // console.log('CocktailsContainer:', props.handleClick);
   return(
     <div className="parent col-xs-4">
-      CocktailsContainer
       { cocktails }
     </div>
   );
