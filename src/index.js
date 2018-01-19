@@ -20,6 +20,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
     // Routing
 
 
+//NICE TO HAVE STUFF: DO ONLY WHEN WE HAVE TIME AT THE LAST MINUTE!!!!!!!!!!!1
+  // Bär (words not english doesnt work)
+
 
 
 // DONE:

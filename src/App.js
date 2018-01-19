@@ -51,17 +51,25 @@ class App extends Component {
     this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
   }
 
+
   foundDrink = (s) => {
     const search = s.toUpperCase();
-    const cocktails = this.state.cocktails.filter( cocktail => cocktail.name.toUpperCase().includes(search) )
-    const ingredients = this.state.ingredients.filter( ingredient => ingredient.name.toUpperCase().includes(search) )
-    const found =  cocktails.concat(ingredients);
-    this.setState( { foundCocktails: found });
+    const drinks = this.state.cocktails.filter( cocktail => (this.findByIngredient(search, cocktail.proportions) || cocktail.name.includes(search)) )
+    return drinks ? drinks : [];
   }
+
+findByIngredient = (search, drinks) => {
+  for (let drink of drinks) {
+    if ( drink.ingredient_name.toUpperCase().includes(search) ) {
+      return true;
+    }
+  }
+  return false
+}
 
 
   render() {
-    console.log("State", this.state);
+
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -80,7 +88,7 @@ class App extends Component {
           </div>
         </nav>
         <div className="container content">
-          <CocktailsContainer cocktails={this.state.foundCocktails} handleClick={this.handleClick} />
+          <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
           <MainContent currentCocktail={this.state.currentCocktail}/>
         </div>
       </div>
