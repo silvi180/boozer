@@ -12,9 +12,16 @@ class App extends Component {
     this.state = {
       cocktails: [],
       ingredients: [],
-      foundCocktails: [],
       currentCocktail: '',
-      searchTerm: ''
+      searchTerm: '',
+      formValue: {
+        name: '',
+        description: '',
+        instructions: '',
+        source: '',
+        ingredient1: '',
+        quantity1: ''
+      }
     }
   }
 
@@ -22,11 +29,8 @@ class App extends Component {
     fetch('http://localhost:3000/api/v1/cocktails')
       .then(resp => resp.json())
       .then(json => {
-        this.showDrink(json[0].id)
         this.setState({
-          cocktails: json,
-          foundCocktails: json,
-          currentCocktail: json[0]
+          cocktails: json
         })
       })
 
@@ -36,6 +40,7 @@ class App extends Component {
     //     ingredients: json
     //   }))
   }
+
 
   handleClick = (id, e) => {
     this.showDrink(id);
@@ -67,10 +72,83 @@ class App extends Component {
     }
     return false
   }
+//working functions below-----------
 
+  createNewCocktail = (fields) => {
 
+    fetch('http://localhost:3000/api/v1/cocktails', {
+      method: 'POST',
+      body: JSON.stringify(fields),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(resp => resp.json()).then(console.log)
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.createNewCocktail(this.state.formValue)
+    // console.log("handleSubmit", this.state.formValue)
+  }
+
+  handleCocktailForm = (event) => {
+    event.preventDefault()
+    switch(event.target.id) {
+      case "name" :
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            name: event.target.value
+          }
+        })
+        break;
+      case "description" :
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            description: event.target.value
+          }
+        })
+        break;
+      case "instructions" :
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            instructions: event.target.value
+          }
+        })
+        break;
+      case "source" :
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            source: event.target.value
+          }
+        })
+        break;
+      case "ingredient" :
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            ingredient1: event.target.value
+          }
+        })
+        break;
+      default:
+        this.setState({
+          formValue: {
+            ...this.state.formValue,
+            quantity1: event.target.value
+          }
+        })
+
+    }
+  }
+  // findOrCreateCocktail = () => {
+  //
+  // }
   render() {
-
     return (
       <div>
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -91,7 +169,7 @@ class App extends Component {
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
           <MainContent currentCocktail={this.state.currentCocktail}/>
-          <CocktailForm />
+          <CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit}/>
         </div>
       </div>
     );

@@ -5,35 +5,35 @@ const CocktailForm = (props) => {
   return(
     <div className="col-xs-5">
       <h3>Cocktail Form</h3>
-        <form action="/action_page.php">
+        <form action="/action_page.php" onChange={props.handleCocktailForm} onSubmit={props.handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
-            <input type="text" className="form-control" id="name"/>
+            <input type="text" className="form-control" id="name" value={props.formValue.name}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="description">Description:</label>
-            <textarea type="text" className="form-control" id="description"/>
+            <textarea type="text" className="form-control" id="description" value={props.formValue.description}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="instructions">Instructions:</label>
-            <textarea type="text" className="form-control" id="instructions"/>
+            <textarea type="text" className="form-control" id="instructions" value={props.formValue.instructions}/>
           </div>
 
           <div className="form-group">
             <label htmlFor="source">Source:</label>
-            <input type="text" className="form-control" id="source"/>
+            <input type="text" className="form-control" id="source" value={props.formValue.source}/>
           </div>
           <h4>Proportions</h4>
           <div className="row">
             <div className="col-xs-6">
               <label htmlFor="ingredient">Ingredient:</label>
-              <input type="text" className="form-control" id="ingredient"/>
+              <input type="text" className="form-control" id="ingredient" value={props.formValue.ingredient1}/>
             </div>
             <div className="col-xs-6">
-              <label htmlFor="ingredient">Quantity:</label>
-              <input type="text" className="form-control" id="ingredient"/>
+              <label htmlFor="quantity">Quantity:</label>
+              <input type="text" className="form-control" id="quantity" value={props.formValue.quantity1}/>
             </div>
           </div>
 
