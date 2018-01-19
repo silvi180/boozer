@@ -19,10 +19,13 @@ class App extends Component {
         description: '',
         instructions: '',
         source: '',
-        ingredient1: '',
-        quantity1: ''
+        proportions: {
+          ingredient: '',
+          amount: ''
+        }
       }
     }
+
   }
 
   componentDidMount() {
@@ -72,8 +75,20 @@ class App extends Component {
     }
     return false
   }
-//working functions below-----------
-
+//working on functions below-----------
+  // handleProportion = () => {
+  //   return (
+  //     <div className="row">
+  //       <div className="col-xs-6">
+  //         <label htmlFor="ingredient">Ingredient:</label>
+  //         <input type="text" className="form-control" id="ingredient" value={props.formValue.ingredient1}/>
+  //       </div>
+  //       <div className="col-xs-6">
+  //         <label htmlFor="quantity">Quantity:</label>
+  //         <input type="text" className="form-control" id="quantity" value={props.formValue.quantity1}/>
+  //       </div>
+  //   )
+  // }
   createNewCocktail = (fields) => {
 
     fetch('http://localhost:3000/api/v1/cocktails', {
@@ -89,7 +104,7 @@ class App extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.createNewCocktail(this.state.formValue)
-    // console.log("handleSubmit", this.state.formValue)
+    console.log("handleSubmit", this.state.formValue)
   }
 
   handleCocktailForm = (event) => {
@@ -131,7 +146,10 @@ class App extends Component {
         this.setState({
           formValue: {
             ...this.state.formValue,
-            ingredient1: event.target.value
+            proportions: {
+              ...this.state.formValue.proportions,
+              ingredient: event.target.value
+            }
           }
         })
         break;
@@ -139,10 +157,12 @@ class App extends Component {
         this.setState({
           formValue: {
             ...this.state.formValue,
-            quantity1: event.target.value
+            proportions:  {
+              ...this.state.formValue.proportions,
+              amount: event.target.value
+            }
           }
         })
-
     }
   }
   // findOrCreateCocktail = () => {
@@ -169,7 +189,7 @@ class App extends Component {
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
           <MainContent currentCocktail={this.state.currentCocktail}/>
-          <CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit}/>
+          <CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit} handleProportion={this.handleProportion}/>
         </div>
       </div>
     );

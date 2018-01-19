@@ -29,16 +29,16 @@ const CocktailForm = (props) => {
           <div className="row">
             <div className="col-xs-6">
               <label htmlFor="ingredient">Ingredient:</label>
-              <input type="text" className="form-control" id="ingredient" value={props.formValue.ingredient1}/>
+              <input type="text" className="form-control" id="ingredient" value={props.formValue.proportions.ingredient}/>
             </div>
             <div className="col-xs-6">
-              <label htmlFor="quantity">Quantity:</label>
-              <input type="text" className="form-control" id="quantity" value={props.formValue.quantity1}/>
+              <label htmlFor="amount">Quantity:</label>
+              <input type="text" className="form-control" id="amount" value={props.formValue.proportions.amount}/>
             </div>
           </div>
 
           <h1><span className="glyphicon glyphicon-plus-sign"></span></h1>
-          <button type="submit" className="btn btn-default">Create Cocktail</button>
+          <button type="submit" className="btn btn-default" >Create Cocktail</button>
         </form>
     </div>
   )
