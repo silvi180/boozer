@@ -58,14 +58,14 @@ class App extends Component {
     return drinks ? drinks : [];
   }
 
-findByIngredient = (search, drinks) => {
-  for (let drink of drinks) {
-    if ( drink.ingredient_name.toUpperCase().includes(search) ) {
-      return true;
+  findByIngredient = (search, drinks) => {
+    for (let drink of drinks) {
+      if ( drink.ingredient_name.toUpperCase().includes(search) ) {
+        return true;
+      }
     }
+    return false
   }
-  return false
-}
 
 
   render() {

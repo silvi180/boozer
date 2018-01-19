@@ -11,7 +11,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
     //Add Create Cocktail Functionality
 
     // Add Photos/ Img URLs to database, display in MainContent
-    // Search by ingredients
     // User Login
         // Add users to backend - add new model
           // Add SavedDrink to User/User Profile/User Drink Page - add new model
@@ -20,11 +19,11 @@ ReactDOM.render(<App />, document.getElementById('root'));
     // Routing
 
 
-//NICE TO HAVE STUFF: DO ONLY WHEN WE HAVE TIME AT THE LAST MINUTE!!!!!!!!!!!1
+//NICE TO HAVE STUFF: DO ONLY WHEN WE HAVE TIME AT THE LAST MINUTE!!!!!!!!!!!
   // Bär (words not english doesnt work)
 
 
 
 // DONE:
-
-    //Add ingredients to main drink page
+  // Search by ingredients
+  //Add ingredients to main drink page
