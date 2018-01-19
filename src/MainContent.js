@@ -14,7 +14,7 @@ const MainContent = (props) => {
   }
 
   return (
-    <div className="col-xs-8">
+    <div className="col-xs-5">
       <h2>Name: {props.currentCocktail.name}</h2>
       <h4>Description:</h4>
       <p>{props.currentCocktail.description}</p>

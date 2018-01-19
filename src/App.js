@@ -3,6 +3,7 @@ import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
 import SearchBar from './SearchBar';
+import CocktailForm from './CocktailForm';
 
 class App extends Component {
   constructor() {
@@ -90,6 +91,7 @@ class App extends Component {
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
           <MainContent currentCocktail={this.state.currentCocktail}/>
+          <CocktailForm />
         </div>
       </div>
     );

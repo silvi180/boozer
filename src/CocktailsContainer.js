@@ -9,7 +9,7 @@ const CocktailsContainer = (props) => {
   })
 
   return(
-    <div className="parent col-xs-4">
+    <div className="parent col-xs-2">
       { cocktails }
     </div>
   );
