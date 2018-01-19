@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CocktailForm = (props) => {
-
+console.log("CocktailForm", props)
   return(
     <div className="col-xs-5">
       <h3>Cocktail Form</h3>
@@ -29,7 +29,7 @@ const CocktailForm = (props) => {
           <div className="row">
             <div className="col-xs-6">
               <label htmlFor="ingredient">Ingredient:</label>
-              <input type="text" className="form-control" id="ingredient" value={props.formValue.proportions.ingredient}/>
+              <input type="text" className="form-control" id="ingredient_name" value={props.formValue.proportions.name}/>
             </div>
             <div className="col-xs-6">
               <label htmlFor="amount">Quantity:</label>

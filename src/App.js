@@ -20,13 +20,15 @@ class App extends Component {
         instructions: '',
         source: '',
         proportions: {
-          ingredient: '',
-          amount: ''
+          name: '',
+          amount: 0
         }
       }
     }
 
   }
+// const cocktailsURL = 'http://localhost:3000/api/v1/cocktails'
+// const ingredientsURL = 'http://localhost:3000/api/v1/ingredients'
 
   componentDidMount() {
     fetch('http://localhost:3000/api/v1/cocktails')
@@ -37,12 +39,13 @@ class App extends Component {
         })
       })
 
-    // fetch('http://localhost:3000/api/v1/ingredients')
-    //   .then(resp => resp.json())
-    //   .then(json => this.setState({
-    //     ingredients: json
-    //   }))
+    fetch('http://localhost:3000/api/v1/ingredients')
+      .then(resp => resp.json())
+      .then(json => this.setState({
+        ingredients: json
+      }))
   }
+
 
 
   handleClick = (id, e) => {
@@ -76,21 +79,8 @@ class App extends Component {
     return false
   }
 //working on functions below-----------
-  // handleProportion = () => {
-  //   return (
-  //     <div className="row">
-  //       <div className="col-xs-6">
-  //         <label htmlFor="ingredient">Ingredient:</label>
-  //         <input type="text" className="form-control" id="ingredient" value={props.formValue.ingredient1}/>
-  //       </div>
-  //       <div className="col-xs-6">
-  //         <label htmlFor="quantity">Quantity:</label>
-  //         <input type="text" className="form-control" id="quantity" value={props.formValue.quantity1}/>
-  //       </div>
-  //   )
-  // }
-  createNewCocktail = (fields) => {
 
+  createNewCocktail = (fields) => {
     fetch('http://localhost:3000/api/v1/cocktails', {
       method: 'POST',
       body: JSON.stringify(fields),
@@ -100,6 +90,41 @@ class App extends Component {
       }
     }).then(resp => resp.json()).then(console.log)
   }
+  // {name: "bitters", description: "hihiih", instructions: "ughghhg", source: "flat", proportions: [{amount: 'dfddfdf', ingredient_id: 1, cocktail_id: 311}]}
+
+  handleCocktailForm = (event) => {
+    // console.log("handleCocktailForm", event.target)
+    if (event.target.id === 'ingredient_name') {
+      this.setState({
+        ...this.state,
+        formValue: {
+          ...this.state.formValue,
+          proportions: {
+            ...this.state.formValue.proportions,
+            name: event.target.value
+          }
+        }
+      })
+    } else if (event.target.id === 'amount') {
+        this.setState({
+          ...this.state,
+          formValue: {
+            ...this.state.formValue,
+            proportions: {
+              ...this.state.formValue.proportions,
+              amount: event.target.value
+            }
+          }
+        })
+    } else {
+      this.setState({
+        formValue: {
+          ...this.state.formValue,
+          [event.target.id]: event.target.value
+        }
+      })
+    }
+  }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -107,67 +132,6 @@ class App extends Component {
     console.log("handleSubmit", this.state.formValue)
   }
 
-  handleCocktailForm = (event) => {
-    event.preventDefault()
-    switch(event.target.id) {
-      case "name" :
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            name: event.target.value
-          }
-        })
-        break;
-      case "description" :
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            description: event.target.value
-          }
-        })
-        break;
-      case "instructions" :
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            instructions: event.target.value
-          }
-        })
-        break;
-      case "source" :
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            source: event.target.value
-          }
-        })
-        break;
-      case "ingredient" :
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            proportions: {
-              ...this.state.formValue.proportions,
-              ingredient: event.target.value
-            }
-          }
-        })
-        break;
-      default:
-        this.setState({
-          formValue: {
-            ...this.state.formValue,
-            proportions:  {
-              ...this.state.formValue.proportions,
-              amount: event.target.value
-            }
-          }
-        })
-    }
-  }
-  // findOrCreateCocktail = () => {
-  //
-  // }
   render() {
     return (
       <div>
@@ -189,7 +153,7 @@ class App extends Component {
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
           <MainContent currentCocktail={this.state.currentCocktail}/>
-          <CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit} handleProportion={this.handleProportion}/>
+          <CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit} />
         </div>
       </div>
     );
