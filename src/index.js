@@ -7,21 +7,27 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 
 // TO DO LIST:
-    // Add Photos/ Img URLs to database, display in MainContent
+
+
+
     // User Login
+      // Add User Profile Page
+        // Add SavedDrink to User/User Profile/User Drink Page
           // Update Drink in a User's Saved Drinks
           // Delete Drink in User's Saved Drinks
     // Routing
+    // Add Photos/ Img URLs to database, display in MainContent
 
 
 //NICE TO HAVE STUFF: DO ONLY WHEN WE HAVE TIME AT THE LAST MINUTE!!!!!!!!!!!
-  // Bär (words not english doesnt work)
+    // Bär (words not english doesnt work)
+
 
 
 
 // DONE:
-  // Add users to backend - add new model
-  // Add SavedDrink to User/User Profile/User Drink Page - add new model
+  // Search by drink name and ingredients
+  // Add ingredients to main drink page
   //Add Create Cocktail Functionality
-  // Search by ingredients
-  //Add ingredients to main drink page
+  // Add users to backend - add new model
+    // Add new model SavedDrink so we can add drinks to User/User Profile/User Drink Page -

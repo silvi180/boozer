@@ -63,7 +63,7 @@ class App extends Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
-    }).then(resp => resp.json()))
+    }).then(resp => resp.json())
   }
 
 
