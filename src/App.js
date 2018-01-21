@@ -4,12 +4,15 @@ import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
 import SearchBar from './SearchBar';
 import CocktailForm from './CocktailForm';
+import SignUp from './UserSignUp';
+import Login from './UserLogin';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      user: null,
       cocktails: [],
       ingredients: [],
       currentCocktail: '',
@@ -21,14 +24,12 @@ class App extends Component {
         source: '',
         proportions: [{
           ingredient_name: '',
-          amount: 0
+          amount: ''
         }]
       }
     }
 
   }
-// const cocktailsURL = 'http://localhost:3000/api/v1/cocktails'
-// const ingredientsURL = 'http://localhost:3000/api/v1/ingredients'
 
   componentDidMount() {
     this.getCocktails()
@@ -46,7 +47,6 @@ class App extends Component {
     })
   }
 
-
   getIngredients = () => {
     fetch('http://localhost:3000/api/v1/ingredients')
     .then(resp => resp.json())
@@ -55,16 +55,27 @@ class App extends Component {
     }))
   }
 
+  createUser = (fields) => {
+    fetch('http://localhost:3000/api/v1/users',{
+      method: 'POST',
+      body: JSON.stringify(fields),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    }).then(resp => resp.json()))
+  }
 
 
-  handleClick = (id, e) => {
+
+  handleClick = (id) => {
     this.showDrink(id);
   }
 
   showDrink = (id) => {
     fetch(`http://localhost:3000/api/v1/cocktails/${id}`)
       .then(resp => resp.json())
-      .then(json => this.setState({ currentCocktail: json }))
+      .then(json => this.setState({ currentCocktail: json }));
   }
 
 
@@ -72,6 +83,9 @@ class App extends Component {
     this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
   }
 
+  handlSearchSubmit = (e) => {
+    e.preventDefault();
+  }
 
   foundDrink = (s) => {
     const search = s.toUpperCase();
@@ -86,9 +100,8 @@ class App extends Component {
         return true;
       }
     }
-    return false
+    return false;
   }
-//working on functions below-----------
 
   createNewCocktail = (fields) => {
     fetch('http://localhost:3000/api/v1/cocktails', {
@@ -104,51 +117,16 @@ class App extends Component {
       this.getIngredients()
     })
   }
-  // {name: "bitters", description: "hihiih", instructions: "ughghhg", source: "flat", proportions: [{amount: 'dfddfdf', ingredient_id: 1, cocktail_id: 311}]}
-
-  // handleCocktailForm = (event) => {
-  //   // console.log("handleCocktailForm", event.target)
-  //   if (event.target.id === 'ingredient_name') {
-  //     this.setState({
-  //       ...this.state,
-  //       formValue: {
-  //         ...this.state.formValue,
-  //         proportions: {
-  //           ...this.state.formValue.proportions,
-  //           name: event.target.value
-  //         }
-  //       }
-  //     })
-  //   } else if (event.target.id === 'amount') {
-  //       this.setState({
-  //         ...this.state,
-  //         formValue: {
-  //           ...this.state.formValue,
-  //           proportions: {
-  //             ...this.state.formValue.proportions,
-  //             amount: event.target.value
-  //           }
-  //         }
-  //       })
-  //   } else {
-  //     this.setState({
-  //       formValue: {
-  //         ...this.state.formValue,
-  //         [event.target.id]: event.target.value
-  //       }
-  //     })
-  //   }
-  // }
 
   handleCocktailChange = (newValue) => {
     this.setState({formValue: newValue});
   };
+//working on functions below-----------
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.createNewCocktail(this.state.formValue)
-    console.log("handleSubmit", this.state.formValue)
+  editCocktail = (id, fields) => {
+
   }
+
 
   render() {
     console.log("App State", this.state);
@@ -160,7 +138,7 @@ class App extends Component {
               <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
             </div>
 
-              <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm}/>
+              <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handlSearchSubmit}/>
 
             <ul className="nav navbar-nav navbar-right pull-right">
               <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -169,14 +147,19 @@ class App extends Component {
 
           </div>
         </nav>
+
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-          <MainContent currentCocktail={this.state.currentCocktail}/>
-          {/*<CocktailForm handleCocktailForm={this.handleCocktailForm} formValue={this.state.formValue} handleSubmit={this.handleSubmit} />*/}
+          <MainContent currentCocktail={this.state.currentCocktail} edit={this.editCocktail}/>
           <CocktailForm onChange={this.handleCocktailChange}
                         value={this.state.formValue}
                         onSubmit={this.createNewCocktail} />
         </div>
+
+        <div className="col-md-12">
+          <SignUp/> <Login/>
+        </div>
+
       </div>
     );
   }

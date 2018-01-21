@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar = (props) => {
   return (
-    <form onChange={props.handleSearch} value={props.searchTerm} className="navbar-form navbar-right" action="/action_page.php">
+    <form onChange={props.handleSearch} value={props.searchTerm} onSubmit={props.submit} className="navbar-form navbar-right" action="/action_page.php">
       <div className="input-group">
         <input type="text" className="form-control" placeholder="Search By Name Or Ingredient"/>
         <div className="input-group-btn">

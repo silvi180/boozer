@@ -13,17 +13,34 @@ const MainContent = (props) => {
     })
   }
 
+  // const editForm = () => {
+  //   console.log('would you like to edit')
+  //   return (
+  //     <form className="col-xs-5">
+  //       <h2>Name: <input type="text" value={props.currentCocktail.name}/> </h2>
+  //       <h4>Description:</h4>
+  //         <textarea type="text" value={props.currentCocktail.description}/>
+  //       <h4>Ingredients:</h4>
+  //         <textarea type="text" value={proportions}/>
+  //       <h4>Instructions:</h4>
+  //         <input type="textarea" value={props.currentCocktail.instructions}/>
+  //       <h4>Source:</h4>
+  //         <textarea type="text" value={props.currentCocktail.source}/>
+  //     </form>
+  //   )
+  // }
+
   return (
     <div className="col-xs-5">
       <h2>Name: {props.currentCocktail.name}</h2>
       <h4>Description:</h4>
-      <p>{props.currentCocktail.description}</p>
+        <p>{props.currentCocktail.description}</p>
       <h4>Ingredients:</h4>
-      {proportions}
+        {proportions}
       <h4>Instructions:</h4>
-      <p>{props.currentCocktail.instructions}</p>
+        <p>{props.currentCocktail.instructions}</p>
       <h4>Source:</h4>
-      <p>{props.currentCocktail.source}</p>
+        <p>{props.currentCocktail.source}</p>
     </div>
   )
 }

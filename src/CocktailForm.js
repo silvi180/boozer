@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  // console.log("CocktailForm", props)
+const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
+
 
   const onFormValueChange = (key, newVal) => {
     onChange({
@@ -76,11 +76,11 @@ const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
 
       <h1><span onClick={() => onFormValueChange('proportions', [...value.proportions, {
         ingredient_name: '',
-        amount: 0
+        amount: ''
       }])} className="glyphicon glyphicon-plus-sign"></span></h1>
     <button type="submit" onClick={() => onSubmit(value)} className="btn btn-default" >Create Cocktail</button>
     </div>
   )
 }
 
-export default CocktailForm;
+export default EditCocktailForm;
