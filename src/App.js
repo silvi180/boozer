@@ -6,13 +6,15 @@ import SearchBar from './SearchBar';
 import CocktailForm from './CocktailForm';
 import SignUp from './UserSignUp';
 import Login from './UserLogin';
+import UserProfile from './UserProfile'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: null,
+      users: [],
+      user: "",
       cocktails: [],
       ingredients: [],
       currentCocktail: '',
@@ -34,6 +36,7 @@ class App extends Component {
   componentDidMount() {
     this.getCocktails()
     this.getIngredients()
+    this.getUsers()
   }
 
 
@@ -52,6 +55,15 @@ class App extends Component {
     .then(resp => resp.json())
     .then(json => this.setState({
       ingredients: json
+    }))
+  }
+
+  getUsers = () => {
+    fetch('http://localhost:3000/api/v1/users')
+    .then(resp => resp.json())
+    .then(json => this.setState({
+      users: json,
+      user: json[0]
     }))
   }
 
@@ -156,9 +168,15 @@ class App extends Component {
                         onSubmit={this.createNewCocktail} />
         </div>
 
-        <div className="col-md-12">
-          <SignUp/> <Login/>
+        <div className="container">
+          <div className="row">
+            <SignUp/> <Login/>
+          </div>
+          <div className="row">
+            <UserProfile user={this.state.user} />
+          </div>
         </div>
+
 
       </div>
     );
