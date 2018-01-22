@@ -3,6 +3,7 @@ import React from 'react';
 const UserProfile = (props) => {
 
 
+  console.log("user", props)
   return(
     <div>
       <h3>User Profile</h3>
