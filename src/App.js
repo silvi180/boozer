@@ -14,8 +14,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      users: [],
-      user: "",
+      user: '',
       cocktails: [],
       ingredients: [],
       currentCocktail: '',
@@ -36,17 +35,7 @@ class App extends Component {
   componentDidMount() {
     this.getCocktails()
     this.getIngredients()
-  }
-
-  forNowFetchAUser = () => {
-    fetch('http://localhost:3000/api/v1/users/1')
-    .then(resp => resp.json())
-    .then(json => {
-      this.setState({
-        user: json
-      })
-    })
-    this.getUsers()
+    this.forNowGetUser()
   }
 
   getCocktails = () => {
@@ -65,16 +54,13 @@ class App extends Component {
     }))
   }
 
-  getUsers = () => {
-    api.apiData.getUsers()
-    .then(json => this.setState({
-      users: json,
-      user: json[0]
-    }))
-  }
-
-
+forNowGetUser = () => {
+  fetch('http://localhost:3000/api/v1/users/1')
+    .then(resp => resp.json())
+    .then(resp => this.setState({ user: resp }))
+}
 // this also exists in api.apiData.createUser(fields) - not currently being used
+//message from silvia: createUser passes down to SignUp component
   createUser = (fields) => {
     fetch('http://localhost:3000/api/v1/users',{
       method: 'POST',
@@ -84,6 +70,7 @@ class App extends Component {
         'Accept': 'application/json'
       }
     }).then(resp => resp.json())
+      .then(resp => this.setState({ user: resp }))
 
   }
 
@@ -94,11 +81,6 @@ class App extends Component {
 
   handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
-  }
-
-// are we using this?
-  handlSearchSubmit = (e) => {
-    e.preventDefault();
   }
 
   foundDrink = (s) => {
@@ -127,6 +109,7 @@ class App extends Component {
   handleCocktailChange = (newValue) => {
     this.setState({formValue: newValue});
   };
+
 //working on functions below-----------
 
   editCocktail = (id, fields) => {
@@ -163,22 +146,18 @@ class App extends Component {
         </div>
 
 
-        <div className="col-md-12">
-          <SignUp create={this.createUser}/> <Login/>
+        <div className="container">
+          <div className="row">
+            <SignUp create={this.createUser}/> <Login/>
+          </div>
 
-        // <div className="container">
-        //   <div className="row">
-        //     <SignUp/> <Login/>
-        //   </div>
-        //   <div className="row">
-        //     <UserProfile user={this.state.user} />
-        //   </div>
-        //
-        // </div>
-
+          <div>
+            <UserProfile user={this.state.user} />
+          </div>
+        </div>
 
       </div>
-    );
+    )
   }
 }
 
