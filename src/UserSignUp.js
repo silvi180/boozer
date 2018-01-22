@@ -28,8 +28,9 @@ export default class SignUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.create(this.state)
   }
-  
+
   render() {
     return (
       <form onChange={this.handleChange} className="col-md-6" >

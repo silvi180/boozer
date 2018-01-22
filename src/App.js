@@ -14,7 +14,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      users: [],
       user: "",
       cocktails: [],
       ingredients: [],
@@ -39,6 +38,8 @@ class App extends Component {
     this.getUsers()
   }
 
+
+// get Data from Api
   getCocktails = () => {
     api.apiData.getCocktails()
     .then(json => {
@@ -55,13 +56,7 @@ class App extends Component {
     }))
   }
 
-  getUsers = () => {
-    api.apiData.getUsers()
-    .then(json => this.setState({
-      users: json,
-      user: json[0]
-    }))
-  }
+//forNowGetUser
 
 
 // this also exists in api.apiData.createUser(fields) - not currently being used
@@ -76,6 +71,8 @@ class App extends Component {
     }).then(resp => resp.json())
   }
 
+
+// event handlers (mostly)
   handleClick = (id) => {
     api.apiData.showDrink(id)
       .then(json => this.setState({ currentCocktail: json }));
@@ -83,11 +80,6 @@ class App extends Component {
 
   handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
-  }
-
-// are we using this?
-  handlSearchSubmit = (e) => {
-    e.preventDefault();
   }
 
   foundDrink = (s) => {
@@ -153,7 +145,7 @@ class App extends Component {
 
         <div className="container">
           <div className="row">
-            <SignUp/> <Login/>
+            <SignUp create={this.createUser}/> <Login/>
           </div>
           <div className="row">
             <UserProfile user={this.state.user} />
