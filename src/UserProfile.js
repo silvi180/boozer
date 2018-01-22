@@ -1,24 +1,33 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const UserProfile = (props) => {
 
   let savedCocktails
   if(props.user.saved_drinks) {
     savedCocktails = props.user.saved_drinks.map((drink, i) => {
+
       return (
-        <div key={drink.saved_drink_id}>
+        <div key={drink.user_drink_id}>
 
           <div className="input-group panel panel-default">
               <div
-                onClick={() => props.selectSavedDrink(drink.saved_drink_cocktail_id)}>
+                onClick={() => props.selectSavedDrink(drink)}>
                 {drink.saved_drink_name}
               </div>
 
 
 
             <div className="input-group-btn">
-              <button className="btn btn-default glyphicon glyphicon-pencil"></button>
-              <button onClick={() => props.removeSavedDrink(drink.saved_drink_id)} className="btn btn-default glyphicon glyphicon-trash"></button>
+              <NavLink
+                to="/profile_edit"
+                exact
+                onClick={() => props.editSavedDrink(drink)}
+                className="btn btn-default glyphicon glyphicon-pencil"
+                >
+              </NavLink>
+
+              <button onClick={() => props.removeSavedDrink(drink.user_drink_id)} className="btn btn-default glyphicon glyphicon-trash"></button>
             </div>
           </div>
 
@@ -30,7 +39,7 @@ const UserProfile = (props) => {
 
 
   return(
-    <div className="col-xs-6 content">
+    <div className="col-xs-4 content">
       <h3>User Profile</h3>
       <h4>{props.user.firstname} {props.user.lastname}</h4>
       <h5><b>Email:</b> {props.user.email}</h5>

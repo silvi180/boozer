@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
@@ -11,6 +11,8 @@ import Login from './UserLogin';
 import UserProfile from './UserProfile'
 import api from './services/api'
 import Navbar from './Navbar'
+import EditCocktailForm from './EditCocktailForm';
+
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class App extends Component {
       ingredients: [],
       currentCocktail: '',
       searchTerm: '',
+      drinkToEdit: '',
       formValue: {
         name: '',
         description: '',
@@ -112,6 +115,18 @@ class App extends Component {
     })
   }
 
+  handleUpdateCocktail = (fields) => {
+    console.log("updateCurrentCocktail", fields);
+    this.setState({
+      drinkToEdit: fields,
+    })
+    // api.apiData.updateCurrentCocktail(fields)
+    // .then(() => {
+    //   this.getCocktails()
+    //   this.getIngredients()
+    // })
+  }
+
   handleCocktailChange = (newValue) => {
     this.setState({formValue: newValue});
   };
@@ -119,6 +134,8 @@ class App extends Component {
 //working on functions below-----------
 
   handleSaveCocktail = (cocktail) => {
+    console.log('saving cocktail', cocktail);
+
     const data = {
       name: cocktail.name,
       description: cocktail.description,
@@ -147,9 +164,9 @@ class App extends Component {
       .then(() => this.forNowGetUser())
   }
 
-  selectSavedDrink = (drinkId) => {
-    console.log('this is the saved drink', drinkId);
-    let cocktail = this.state.cocktails.find( c => c.id === drinkId)
+  selectSavedDrink = (drink) => {
+    console.log('this is the saved drink', drink);
+    let cocktail = this.state.cocktails.find( c => c.id === drink.saved_drink_cocktail_id)
     console.log('selected cocktail:', cocktail);
     this.setState({
       currentCocktail: cocktail
@@ -223,7 +240,24 @@ class App extends Component {
                     user={this.state.user}
                     selectSavedDrink={this.selectSavedDrink}
                     removeSavedDrink={this.removeSavedDrink}
+                    editSavedDrink={this.handleUpdateCocktail}
                     />
+                )
+              }} />
+            <Route exact path="/profile_edit" component={() => {
+                return(
+                  <div>
+                    <UserProfile
+                      user={this.state.user}
+                      selectSavedDrink={this.selectSavedDrink}
+                      removeSavedDrink={this.removeSavedDrink}
+                      editSavedDrink={this.handleUpdateCocktail}
+                      />
+                    <div className="col-xs-1"></div>
+                    <EditCocktailForm onChange={this.handleCocktailChange}
+                      value={this.state.drinkToEdit}
+                      onSubmit={this.handleUpdateCocktail} />
+                  </div>
                 )
               }} />
             <Route exact path="/new_cocktail" render={() => {
@@ -231,6 +265,14 @@ class App extends Component {
                   <CocktailForm onChange={this.handleCocktailChange}
                                 value={this.state.formValue}
                                 onSubmit={this.handleNewCocktail} />
+                );
+              }}
+            />
+          <Route exact path="/edit_cocktail" render={() => {
+                return(
+                  <EditCocktailForm onChange={this.handleCocktailChange}
+                                value={this.state.drinkToEdit}
+                                onSubmit={this.handleUpdateCocktail} />
                 );
               }}
             />

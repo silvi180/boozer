@@ -41,6 +41,14 @@ const createNewCocktail = (fields) => {
   }).then(resp => resp.json())
 }
 
+// const updateCurrentCocktail = (fields) => {
+//   return fetch(`${API_ROOT}/saved_cocktails/${fields.user_drink_id}`, {
+//     method: 'PATCH',
+//     body: JSON.stringify(fields),
+//     headers,
+//   }).then(resp => resp.json())
+// }
+
 export default{
   apiData: {
     getCocktails,
