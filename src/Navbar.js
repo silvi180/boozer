@@ -1,8 +1,9 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 
 
 const Navbar = (props) => {
-  console.log("Navbar", props.user.firstname);
+
 
   return (
     <nav className="navbar navbar-default navbar-fixed-top">
@@ -11,6 +12,28 @@ const Navbar = (props) => {
           <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
         </div>
 
+        <ul className="nav navbar-nav">
+          <li><NavLink
+            to="/"
+            exact
+            >Home</NavLink></li>
+          <li><NavLink
+            to="/signup"
+            exact
+            >Sign Up</NavLink></li>
+          <li><NavLink
+            to="/login"
+            exact
+            >Log In</NavLink></li>
+          <li><NavLink
+            to="/profile"
+            exact
+            >Profile</NavLink></li>
+          <li><NavLink
+            to="/new_cocktail"
+            exact
+            >Create New Cocktail</NavLink></li>
+        </ul>
 
 
         <ul className="nav navbar-nav navbar-right pull-right">

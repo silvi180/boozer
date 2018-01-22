@@ -1,7 +1,7 @@
 import React from 'react';
 
 const UserProfile = (props) => {
-  console.log('user props', props);
+
   let savedCocktails
   if(props.user.saved_drinks) {
     savedCocktails = props.user.saved_drinks.map((drink, i) => {

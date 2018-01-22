@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
@@ -172,37 +172,79 @@ class App extends Component {
 
   render() {
     console.log("App State", this.state);
+    const searchStyle = {
+      position: "fixed",
+      top: 0,
+
+    }
+
     return (
       <div>
-        <Navbar user={this.state.user}/>
-        <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handlSearchSubmit}/>
-
-        <div className="container content">
-          <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-          <MainContent
-            currentCocktail={this.state.currentCocktail}
-            edit={this.editCocktail}
-            saveCocktail={this.handleSaveCocktail}
-          />
-          <CocktailForm onChange={this.handleCocktailChange}
-                        value={this.state.formValue}
-                        onSubmit={this.handleNewCocktail} />
-        </div>
-
-
-        <div className="container">
-          <div className="row">
-            <SignUp create={this.createUser}/> <Login/>
-          </div>
-
+        <Router>
           <div>
-            <UserProfile
-              user={this.state.user}
-              selectSavedDrink={this.selectSavedDrink}
-              removeSavedDrink={this.removeSavedDrink}
-           />
+            <Navbar user={this.state.user}>
+
+            </Navbar>
+
+             <Route exact path="/" render={routerProps => {
+                 return(
+                   <div>
+
+                     <div className="container">
+                       <SearchBar
+                         handleSearch={this.handleSearch}
+                         searchTerm={this.state.searchTerm}
+                         submit={this.handlSearchSubmit}
+                         style={searchStyle}
+                       />
+                       <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
+                       <MainContent
+                         currentCocktail={this.state.currentCocktail}
+                         edit={this.editCocktail}
+                         saveCocktail={this.handleSaveCocktail}
+                       />
+                     </div>
+                   </div>
+
+                 );
+               }}
+              />
+            <Route exact path="/signup" render={() => {
+                return(
+                  <SignUp create={this.createUser}/>
+                );
+              }} />
+            <Route exact path="/login" render={() => {
+                return(
+                  <Login />
+                );
+              }} />
+            <Route exact path="/profile" component={() => {
+                return(
+                  <UserProfile
+                    user={this.state.user}
+                    selectSavedDrink={this.selectSavedDrink}
+                    removeSavedDrink={this.removeSavedDrink}
+                    />
+                )
+              }} />
+            <Route exact path="/new_cocktail" render={() => {
+                return(
+                  <CocktailForm onChange={this.handleCocktailChange}
+                                value={this.state.formValue}
+                                onSubmit={this.handleNewCocktail} />
+                );
+              }}
+            />
+
           </div>
-        </div>
+        </Router>
+
+
+
+
+
+
 
       </div>
     )
