@@ -11,8 +11,6 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 
     // User Login
-      // Add User Profile Page
-        // Add SavedDrink to User/User Profile/User Drink Page
           // Update Drink in a User's Saved Drinks
           // Delete Drink in User's Saved Drinks
     // Routing
@@ -26,6 +24,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 
 // DONE:
+  // Add User Profile Page
+      // Add SavedDrink to User/User Profile/User Drink Page
   // Search by drink name and ingredients
   // Add ingredients to main drink page
   //Add Create Cocktail Functionality

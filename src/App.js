@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+// import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
@@ -8,6 +10,7 @@ import SignUp from './UserSignUp';
 import Login from './UserLogin';
 import UserProfile from './UserProfile'
 import api from './services/api'
+import Navbar from './Navbar'
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +41,6 @@ class App extends Component {
     this.forNowGetUser()
   }
 
-
 // get Data from Api
   getCocktails = () => {
     api.apiData.getCocktails()
@@ -56,11 +58,11 @@ class App extends Component {
     }))
   }
 
-forNowGetUser = () => {
-  fetch('http://localhost:3000/api/v1/users/1')
-    .then(resp => resp.json())
-    .then(resp => this.setState({ user: resp }))
-}
+  forNowGetUser = () => {
+    fetch('http://localhost:3000/api/v1/users/1')
+      .then(resp => resp.json())
+      .then(resp => this.setState({ user: resp }))
+  }
 // this also exists in api.apiData.createUser(fields) - not currently being used
 //message from silvia: createUser passes down to SignUp component
   createUser = (fields) => {
@@ -116,6 +118,53 @@ forNowGetUser = () => {
 
 //working on functions below-----------
 
+  handleSaveCocktail = (cocktail) => {
+    const data = {
+      name: cocktail.name,
+      description: cocktail.description,
+      instructions: cocktail.instructions,
+      source: cocktail.source,
+      cocktail_id: cocktail.id,
+      user_id: this.state.user.id
+    }
+    this.createSavedCocktail(data)
+
+    // not using: proportions...so no ingredients
+    // we may need to rethink this
+
+  }
+
+  createSavedCocktail = (data) => {
+    console.log('saving data', data);
+    fetch('http://localhost:3000/api/v1/saved_drinks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(resp => resp.json())
+      .then(() => this.forNowGetUser())
+  }
+
+  selectSavedDrink = (drinkId) => {
+    console.log('this is the saved drink', drinkId);
+    let cocktail = this.state.cocktails.find( c => c.id === drinkId)
+    console.log('selected cocktail:', cocktail);
+    this.setState({
+      currentCocktail: cocktail
+    })
+  }
+
+  removeSavedDrink = (drinkId) => {
+    console.log('this is the drink to remove', drinkId);
+    fetch(`http://localhost:3000/api/v1/saved_drinks/${drinkId}`, {
+      method: 'DELETE'
+    }).then(resp => resp.json())
+      .then(() => this.forNowGetUser())
+  }
+
+
   editCocktail = (id, fields) => {
 
   }
@@ -125,25 +174,16 @@ forNowGetUser = () => {
     console.log("App State", this.state);
     return (
       <div>
-        <nav className="navbar navbar-default navbar-fixed-top">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
-            </div>
-
-              <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handlSearchSubmit}/>
-
-            <ul className="nav navbar-nav navbar-right pull-right">
-              <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="index.html"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-
-          </div>
-        </nav>
+        <Navbar user={this.state.user}/>
+        <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handlSearchSubmit}/>
 
         <div className="container content">
           <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-          <MainContent currentCocktail={this.state.currentCocktail} edit={this.editCocktail}/>
+          <MainContent
+            currentCocktail={this.state.currentCocktail}
+            edit={this.editCocktail}
+            saveCocktail={this.handleSaveCocktail}
+          />
           <CocktailForm onChange={this.handleCocktailChange}
                         value={this.state.formValue}
                         onSubmit={this.handleNewCocktail} />
@@ -156,7 +196,11 @@ forNowGetUser = () => {
           </div>
 
           <div>
-            <UserProfile user={this.state.user} />
+            <UserProfile
+              user={this.state.user}
+              selectSavedDrink={this.selectSavedDrink}
+              removeSavedDrink={this.removeSavedDrink}
+           />
           </div>
         </div>
 
