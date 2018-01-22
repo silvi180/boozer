@@ -6,7 +6,7 @@ const Navbar = (props) => {
 
 
   return (
-    <nav className="navbar navbar-default navbar-fixed-top">
+    <nav className="navbar navbar-inverse navbar-fixed-top">
       <div className="container-fluid">
         <div className="navbar-header">
           <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
@@ -37,7 +37,12 @@ const Navbar = (props) => {
 
 
         <ul className="nav navbar-nav navbar-right pull-right">
-          <li><a href="index.html"><span className="glyphicon glyphicon-user"></span> Logged in as {props.user.firstname} {props.user.lastname}</a></li>
+          <li>
+            <NavLink
+              to="/profile"
+              exact
+              ><span className="glyphicon glyphicon-user"></span> Logged in as {props.user.firstname} {props.user.lastname}</NavLink>
+          </li>
           <li><a href="index.html"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
 

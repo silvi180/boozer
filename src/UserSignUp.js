@@ -33,7 +33,7 @@ export default class SignUp extends Component {
   render() {
     // console.log("handleChange", this.state)
     return (
-      <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 panel panel-default" >
+      <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 content" >
         <h3>Sign Up</h3>
         <input type="text" value={this.state.firstname} name="firstname" placeholder="Firstname"/>
         <input type="text" value={this.state.lastname} name="lastname" placeholder="Lastname"/>

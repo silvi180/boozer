@@ -1,7 +1,6 @@
 import React from 'react';
 
 const MainContent = (props) => {
-
   let proportions
 
   if (props.currentCocktail.proportions) {

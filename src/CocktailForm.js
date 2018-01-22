@@ -11,7 +11,7 @@ const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
   }
 
   return(
-    <div className="col-xs-5">
+    <div className="col-xs-5 content">
       <h3>Cocktail Form</h3>
       <div className="form-group">
         <label htmlFor="name">Name:</label>

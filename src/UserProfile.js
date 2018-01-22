@@ -30,7 +30,7 @@ const UserProfile = (props) => {
 
 
   return(
-    <div className="col-xs-6 panel panel-default">
+    <div className="col-xs-6 content">
       <h3>User Profile</h3>
       <h4>{props.user.firstname} {props.user.lastname}</h4>
       <h5><b>Email:</b> {props.user.email}</h5>

@@ -172,6 +172,8 @@ class App extends Component {
 
   render() {
     console.log("App State", this.state);
+    console.log('current cocktail in state', this.state.currentCocktail);
+
     const searchStyle = {
       position: "fixed",
       top: 0,
@@ -179,18 +181,14 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <div className="container">
         <Router>
           <div>
-            <Navbar user={this.state.user}>
-
-            </Navbar>
-
+            <Navbar user={this.state.user} />
              <Route exact path="/" render={routerProps => {
                  return(
-                   <div>
-
-                     <div className="container">
+                   <div className="container content">
+                     <div>
                        <SearchBar
                          handleSearch={this.handleSearch}
                          searchTerm={this.state.searchTerm}
