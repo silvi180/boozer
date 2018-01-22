@@ -6,13 +6,16 @@ import SearchBar from './SearchBar';
 import CocktailForm from './CocktailForm';
 import SignUp from './UserSignUp';
 import Login from './UserLogin';
+import UserProfile from './UserProfile'
+import api from './services/api'
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      user: null,
+      users: [],
+      user: "",
       cocktails: [],
       ingredients: [],
       currentCocktail: '',
@@ -28,13 +31,11 @@ class App extends Component {
         }]
       }
     }
-
   }
 
   componentDidMount() {
     this.getCocktails()
     this.getIngredients()
-    this.forNowFetchAUser()
   }
 
   forNowFetchAUser = () => {
@@ -45,11 +46,11 @@ class App extends Component {
         user: json
       })
     })
+    this.getUsers()
   }
 
   getCocktails = () => {
-    fetch('http://localhost:3000/api/v1/cocktails')
-    .then(resp => resp.json())
+    api.apiData.getCocktails()
     .then(json => {
       this.setState({
         cocktails: json
@@ -58,13 +59,22 @@ class App extends Component {
   }
 
   getIngredients = () => {
-    fetch('http://localhost:3000/api/v1/ingredients')
-    .then(resp => resp.json())
+    api.apiData.getIngredients()
     .then(json => this.setState({
       ingredients: json
     }))
   }
 
+  getUsers = () => {
+    api.apiData.getUsers()
+    .then(json => this.setState({
+      users: json,
+      user: json[0]
+    }))
+  }
+
+
+// this also exists in api.apiData.createUser(fields) - not currently being used
   createUser = (fields) => {
     fetch('http://localhost:3000/api/v1/users',{
       method: 'POST',
@@ -73,26 +83,20 @@ class App extends Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
-    }).then(resp => resp.json()).then(resp => console.log(resp))
+    }).then(resp => resp.json())
+
   }
-
-
 
   handleClick = (id) => {
-    this.showDrink(id);
-  }
-
-  showDrink = (id) => {
-    fetch(`http://localhost:3000/api/v1/cocktails/${id}`)
-      .then(resp => resp.json())
+    api.apiData.showDrink(id)
       .then(json => this.setState({ currentCocktail: json }));
   }
-
 
   handleSearch = (e) => {
     this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
   }
 
+// are we using this?
   handlSearchSubmit = (e) => {
     e.preventDefault();
   }
@@ -103,7 +107,6 @@ class App extends Component {
     return drinks ? drinks : [];
   }
 
-
   findByIngredient = (search, drinks) => {
     for (let drink of drinks) {
       if ( drink.ingredient_name.toUpperCase().includes(search) ) {
@@ -113,15 +116,8 @@ class App extends Component {
     return false;
   }
 
-  createNewCocktail = (fields) => {
-    fetch('http://localhost:3000/api/v1/cocktails', {
-      method: 'POST',
-      body: JSON.stringify(fields),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    }).then(resp => resp.json())
+  handleNewCocktail = (fields) => {
+    api.apiData.createNewCocktail(fields)
     .then(() => {
       this.getCocktails()
       this.getIngredients()
@@ -163,12 +159,23 @@ class App extends Component {
           <MainContent currentCocktail={this.state.currentCocktail} edit={this.editCocktail}/>
           <CocktailForm onChange={this.handleCocktailChange}
                         value={this.state.formValue}
-                        onSubmit={this.createNewCocktail} />
+                        onSubmit={this.handleNewCocktail} />
         </div>
+
 
         <div className="col-md-12">
           <SignUp create={this.createUser}/> <Login/>
-        </div>
+
+        // <div className="container">
+        //   <div className="row">
+        //     <SignUp/> <Login/>
+        //   </div>
+        //   <div className="row">
+        //     <UserProfile user={this.state.user} />
+        //   </div>
+        //
+        // </div>
+
 
       </div>
     );
