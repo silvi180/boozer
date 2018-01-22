@@ -34,8 +34,18 @@ class App extends Component {
   componentDidMount() {
     this.getCocktails()
     this.getIngredients()
+    this.forNowFetchAUser()
   }
 
+  forNowFetchAUser = () => {
+    fetch('http://localhost:3000/api/v1/users/1')
+    .then(resp => resp.json())
+    .then(json => {
+      this.setState({
+        user: json
+      })
+    })
+  }
 
   getCocktails = () => {
     fetch('http://localhost:3000/api/v1/cocktails')
@@ -63,7 +73,7 @@ class App extends Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       }
-    }).then(resp => resp.json()))
+    }).then(resp => resp.json()).then(resp => console.log(resp))
   }
 
 
@@ -157,7 +167,7 @@ class App extends Component {
         </div>
 
         <div className="col-md-12">
-          <SignUp/> <Login/>
+          <SignUp create={this.createUser}/> <Login/>
         </div>
 
       </div>
