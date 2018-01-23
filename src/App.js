@@ -133,7 +133,8 @@ class App extends Component {
   handlePostCocktail = (fields) => {
       console.log('about to post', fields);
       api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
-      //Need to update user's coctails, redirect to profile page
+
+      //Need to update user's cocktails, redirect to profile page
   }
 
   handleCocktailChange = (newValue) => {
@@ -156,7 +157,8 @@ class App extends Component {
       instructions: cocktail.instructions,
       source: cocktail.source,
       cocktail_id: cocktail.id,
-      user_id: this.state.user.id
+      user_id: this.state.user.id,
+      proportions: cocktail.proportions
     }
     this.createSavedCocktail(data)
 
