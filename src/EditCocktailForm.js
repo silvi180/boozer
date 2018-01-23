@@ -17,9 +17,11 @@ import React from 'react';
 
 
 const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  console.log("CocktailForm", value)
+  console.log("CocktailForm", value.saved_drink_name)
 
   const onFormValueChange = (key, newVal) => {
+    console.log('onFormValueChange Key', key);
+    console.log('onFormValueChange newVal', newVal);
     onChange({
       ...value,
       [key]: newVal,
@@ -32,7 +34,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="text"
-               onChange={e => onFormValueChange('name', e.target.value)}
+               onChange={e => onFormValueChange('saved_drink_name', e.target.value)}
                className="form-control"
                value={value.saved_drink_name}/>
       </div>
@@ -40,7 +42,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
       <div className="form-group">
         <label htmlFor="description">Description:</label>
         <textarea type="text"
-                  onChange={e => onFormValueChange('description', e.target.value)}
+                  onChange={e => onFormValueChange('saved_drink_description', e.target.value)}
                   className="form-control"
                   value={value.saved_drink_description}/>
       </div>
@@ -48,7 +50,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
       <div className="form-group">
         <label htmlFor="instructions">Instructions:</label>
         <textarea type="text"
-                  onChange={e => onFormValueChange('instructions', e.target.value)}
+                  onChange={e => onFormValueChange('saved_drink_instructions', e.target.value)}
                   className="form-control"
                   value={value.saved_drink_instructions}/>
       </div>
@@ -56,7 +58,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
       <div className="form-group">
         <label htmlFor="source">Source:</label>
         <input type="text"
-               onChange={e => onFormValueChange('source', e.target.value)}
+               onChange={e => onFormValueChange('saved_drink_source', e.target.value)}
                className="form-control"
                value={value.saved_drink_source}/>
       </div>

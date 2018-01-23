@@ -18,6 +18,10 @@ const Navbar = (props) => {
             exact
             >Home</NavLink></li>
           <li><NavLink
+            to="/search"
+            exact
+            >Search</NavLink></li>
+          <li><NavLink
             to="/signup"
             exact
             >Sign Up</NavLink></li>
@@ -33,10 +37,6 @@ const Navbar = (props) => {
             to="/new_cocktail"
             exact
             >Create New Cocktail</NavLink></li>
-          <li><NavLink
-            to="/edit_cocktail"
-            exact
-            >Edit Cocktail</NavLink></li>
         </ul>
 
 
