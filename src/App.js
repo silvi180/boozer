@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import './css/App.css';
 import CocktailsContainer from './CocktailsContainer';
 import MainContent from './MainContent';
@@ -25,6 +25,7 @@ class App extends Component {
       currentCocktail: '',
       searchTerm: '',
       drinkToEdit: '',
+      redirect: false,
       formValue: {
         name: '',
         description: '',
@@ -89,7 +90,10 @@ class App extends Component {
   }
 
   handleSearch = (e) => {
-    this.setState({ searchTerm: e.target.value }, () => this.foundDrink(this.state.searchTerm));
+    this.setState({
+      searchTerm: e.target.value,
+      redirect: false,
+    }, () => this.foundDrink(this.state.searchTerm));
   }
 
   foundDrink = (s) => {
@@ -116,11 +120,11 @@ class App extends Component {
   }
 
   handleUpdateCocktail = (fields) => {
-    console.log("updateCurrentCocktail", fields);
-    this.setState({
-      drinkToEdit: fields,
-    })
-    api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
+      this.setState({
+        drinkToEdit: fields,
+      })
+    // api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
+
     // .then(() => {
     //   this.getCocktails()
     //   this.getIngredients()
@@ -130,6 +134,11 @@ class App extends Component {
   handleCocktailChange = (newValue) => {
     this.setState({formValue: newValue});
   };
+
+  handleUpdateChange = (newValue) => {
+    console.log('handle update change');
+    this.setState({drinkToEdit: newValue})
+  }
 
 //working on functions below-----------
 
@@ -149,6 +158,15 @@ class App extends Component {
     // not using: proportions...so no ingredients
     // we may need to rethink this
 
+  }
+
+  handleSearchSubmit = (e) => {
+    e.preventDefault()
+    console.log('handling submit', this.props);
+
+    this.setState({
+      redirect: true
+    })
   }
 
   createSavedCocktail = (data) => {
@@ -188,7 +206,7 @@ class App extends Component {
 
 
   render() {
-    // console.log("App State", this.state);
+    console.log("App State Drink to Edit", this.state.drinkToEdit);
     // console.log('current cocktail in state', this.state.currentCocktail);
 
     const searchStyle = {
@@ -206,12 +224,42 @@ class App extends Component {
                  return(
                    <div className="container content">
                      <div>
-                       <SearchBar
-                         handleSearch={this.handleSearch}
-                         searchTerm={this.state.searchTerm}
-                         submit={this.handlSearchSubmit}
-                         style={searchStyle}
-                       />
+                       <div className="spacer"></div>
+                       <h1 className="main-heading">Welcome to CocktailCupboard</h1>
+                       <div className="row">
+                         <div className="col-xs-8">
+                           <h4>Search for a Cocktail...</h4>
+                           <SearchBar
+                             handleSearch={this.handleSearch}
+                             searchTerm={this.state.searchTerm}
+                             submit={this.handleSearchSubmit}
+                             style={searchStyle}
+                             />
+                         </div>
+                       </div>
+                       <div className="spacer"></div>
+                     </div>
+                     {this.state.redirect &&
+                       <Redirect to='/search' /> }
+
+                   </div>
+
+                 );
+               }}
+              />
+            <Route exact path="/search" render={routerProps => {
+                 return(
+                   <div className="container content">
+                     <div>
+                       <div className="navbar-form pull-right">
+                         <SearchBar
+                           handleSearch={this.handleSearch}
+                           searchTerm={this.state.searchTerm}
+                           submit={this.handleSearchSubmit}
+
+                           style={searchStyle}
+                           />
+                       </div>
                        <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
                        <div className="col-xs-6">
                          <MainContent
@@ -272,7 +320,7 @@ class App extends Component {
             />
           <Route exact path="/edit_cocktail" render={() => {
                 return(
-                  <EditCocktailForm onChange={this.handleCocktailChange}
+                  <EditCocktailForm onChange={this.handleUpdateChange}
                                 value={this.state.drinkToEdit}
                                 onSubmit={this.handleUpdateCocktail} />
                 );
