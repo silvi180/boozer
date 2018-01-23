@@ -120,7 +120,7 @@ class App extends Component {
     this.setState({
       drinkToEdit: fields,
     })
-    // api.apiData.updateCurrentCocktail(fields)
+    api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
     // .then(() => {
     //   this.getCocktails()
     //   this.getIngredients()

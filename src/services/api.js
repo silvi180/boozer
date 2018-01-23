@@ -41,13 +41,13 @@ const createNewCocktail = (fields) => {
   }).then(resp => resp.json())
 }
 
-// const updateCurrentCocktail = (fields) => {
-//   return fetch(`${API_ROOT}/saved_cocktails/${fields.user_drink_id}`, {
-//     method: 'PATCH',
-//     body: JSON.stringify(fields),
-//     headers,
-//   }).then(resp => resp.json())
-// }
+const updateCurrentCocktail = (fields) => {
+  return fetch(`${API_ROOT}/saved_drinks/${fields.user_drink_id}`, {
+    method: 'PATCH',
+    body: JSON.stringify(fields),
+    headers,
+  }).then(resp => resp.json())
+}
 
 export default{
   apiData: {
@@ -56,6 +56,7 @@ export default{
     getUsers,
     createUser,
     showDrink,
-    createNewCocktail
+    createNewCocktail,
+    updateCurrentCocktail
   }
 }
