@@ -14,22 +14,16 @@ const MainContent = (props) => {
     })
   }
 
-  // const editForm = () => {
-  //   console.log('would you like to edit')
-  //   return (
-  //     <form className="col-xs-5">
-  //       <h2>Name: <input type="text" value={props.currentCocktail.name}/> </h2>
-  //       <h4>Description:</h4>
-  //         <textarea type="text" value={props.currentCocktail.description}/>
-  //       <h4>Ingredients:</h4>
-  //         <textarea type="text" value={proportions}/>
-  //       <h4>Instructions:</h4>
-  //         <input type="textarea" value={props.currentCocktail.instructions}/>
-  //       <h4>Source:</h4>
-  //         <textarea type="text" value={props.currentCocktail.source}/>
-  //     </form>
-  //   )
-  // }
+  if (props.currentCocktail.adjusted_proportions && props.currentCocktail.adjusted_proportions.length > 0) {
+    proportions = props.currentCocktail.adjusted_proportions.map((pro, i) => {
+      return(
+        <div key={i}>
+          <p>{pro.amount} {pro.ingredient_name}</p>
+        </div>
+      )
+    })
+  }
+
 
   return (
     <div>
