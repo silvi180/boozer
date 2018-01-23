@@ -17,7 +17,7 @@ import React from 'react';
 
 
 const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  console.log("CocktailForm", value.saved_drink_name)
+  console.log("CocktailForm", value)
 
   const onFormValueChange = (key, newVal) => {
     console.log('onFormValueChange Key', key);
@@ -34,36 +34,36 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="text"
-               onChange={e => onFormValueChange('saved_drink_name', e.target.value)}
+               onChange={e => onFormValueChange('name', e.target.value)}
                className="form-control"
-               value={value.saved_drink_name}/>
+               value={value.name}/>
       </div>
 
       <div className="form-group">
         <label htmlFor="description">Description:</label>
         <textarea type="text"
-                  onChange={e => onFormValueChange('saved_drink_description', e.target.value)}
+                  onChange={e => onFormValueChange('description', e.target.value)}
                   className="form-control"
-                  value={value.saved_drink_description}/>
+                  value={value.description}/>
       </div>
 
       <div className="form-group">
         <label htmlFor="instructions">Instructions:</label>
         <textarea type="text"
-                  onChange={e => onFormValueChange('saved_drink_instructions', e.target.value)}
+                  onChange={e => onFormValueChange('instructions', e.target.value)}
                   className="form-control"
-                  value={value.saved_drink_instructions}/>
+                  value={value.instructions}/>
       </div>
 
       <div className="form-group">
         <label htmlFor="source">Source:</label>
         <input type="text"
-               onChange={e => onFormValueChange('saved_drink_source', e.target.value)}
+               onChange={e => onFormValueChange('source', e.target.value)}
                className="form-control"
-               value={value.saved_drink_source}/>
+               value={value.source}/>
       </div>
       <h4>Proportions</h4>
-      {value.saved_drink_proportions && value.saved_drink_proportions.map((proportion, index, origArray) => {
+      {value.proportions && value.proportions.map((proportion, index, origArray) => {
         return (
           <div className="row" key={index}>
             <div className="col-xs-6">
