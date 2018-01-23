@@ -49,6 +49,14 @@ const updateCurrentCocktail = (fields) => {
   }).then(resp => resp.json())
 }
 
+const login = (fields) => {
+  return fetch(`${API_ROOT}/auth`, {
+    method: 'POST',
+    body: JSON.stringify(fields),
+    headers,
+  }).then(resp => resp.json())
+}
+
 export default{
   apiData: {
     getCocktails,
@@ -57,6 +65,7 @@ export default{
     createUser,
     showDrink,
     createNewCocktail,
-    updateCurrentCocktail
+    updateCurrentCocktail,
+    login
   }
 }
