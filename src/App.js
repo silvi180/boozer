@@ -123,12 +123,12 @@ class App extends Component {
       this.setState({
         drinkToEdit: fields,
       })
-    // api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
-
-    // .then(() => {
-    //   this.getCocktails()
-    //   this.getIngredients()
-    // })
+  }
+// form submits 'saved_drink_name', but api expects 'name' - FIXED in UsersController
+  handlePostCocktail = (fields) => {
+      console.log('about to post', fields);
+      api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
+      //Need to update user's coctails, redirect to profile page 
   }
 
   handleCocktailChange = (newValue) => {
@@ -184,7 +184,7 @@ class App extends Component {
 
   selectSavedDrink = (drink) => {
     console.log('this is the saved drink', drink);
-    let cocktail = this.state.cocktails.find( c => c.id === drink.saved_drink_cocktail_id)
+    let cocktail = this.state.cocktails.find( c => c.id === drink.cocktail_id)
     console.log('selected cocktail:', cocktail);
     this.setState({
       currentCocktail: cocktail
@@ -294,22 +294,7 @@ class App extends Component {
                     />
                 )
               }} />
-            <Route exact path="/profile_edit" component={() => {
-                return(
-                  <div>
-                    <UserProfile
-                      user={this.state.user}
-                      selectSavedDrink={this.selectSavedDrink}
-                      removeSavedDrink={this.removeSavedDrink}
-                      editSavedDrink={this.handleUpdateCocktail}
-                      />
-                    <div className="col-xs-1"></div>
-                    <EditCocktailForm onChange={this.handleCocktailChange}
-                      value={this.state.drinkToEdit}
-                      onSubmit={this.handleUpdateCocktail} />
-                  </div>
-                )
-              }} />
+
             <Route exact path="/new_cocktail" render={() => {
                 return(
                   <CocktailForm onChange={this.handleCocktailChange}
@@ -322,7 +307,7 @@ class App extends Component {
                 return(
                   <EditCocktailForm onChange={this.handleUpdateChange}
                                 value={this.state.drinkToEdit}
-                                onSubmit={this.handleUpdateCocktail} />
+                                onSubmit={this.handlePostCocktail} />
                 );
               }}
             />

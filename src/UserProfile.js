@@ -15,7 +15,7 @@ const UserProfile = (props) => {
                 to="/show_cocktail"
                 exact
                 onClick={() => props.selectSavedDrink(drink)}>
-                {drink.saved_drink_name}
+                {drink.name}
               </NavLink>
 
 
