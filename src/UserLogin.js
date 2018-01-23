@@ -1,5 +1,7 @@
 import React from 'react';
 import api from './services/api';
+import { NavLink } from 'react-router-dom'
+
 
 export default class Login extends React.Component {
 
@@ -49,7 +51,14 @@ export default class Login extends React.Component {
             <label htmlFor="password">Password:</label>
             <input className="form-control" type="password" id="password" placeholder="Password" value={this.state.fields.password}/>
           </div>
-          <button type="submit" className="btn btn-default" >Login</button>
+          <NavLink
+            to="/profile"
+            type="submit"
+            className="btn btn-default" >Login</NavLink>
+          <NavLink
+            to="/signup"
+            className="pull-right"
+            >Don't have an account? Sign Up Instead</NavLink>
         </form>
       </div>
     )

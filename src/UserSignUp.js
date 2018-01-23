@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
+
+
 
 export default class SignUp extends Component {
 
@@ -35,15 +38,54 @@ export default class SignUp extends Component {
     return (
       <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 content" >
         <h3>Sign Up</h3>
-        <input type="text" value={this.state.firstname} name="firstname" placeholder="Firstname"/>
-        <input type="text" value={this.state.lastname} name="lastname" placeholder="Lastname"/>
-        <input type="text" value={this.state.email} name="email" placeholder="Email"/>
-        <input type="text" value={this.state.username} name="username" placeholder="Username"/>
-        <input type="text" value={this.state.password} name="password"placeholder="Password"/>
-        <input type="text" value={this.state.password_confirmation} name="password_confirmation" placeholder="Password Confirmation"/>
-        <input type="text" value={this.state.age} name="age" placeholder="Age"/>
-        <input type="text" value={this.state.bio} name="bio" placeholder="Bio"/>
-        <button type="submit" className="btn btn-default" >Sign Up</button>
+          <div className="col-xs-6">
+            <div className="form-group">
+              <label htmlFor="firstname">First Name:</label>
+              <input className="form-control" type="text" value={this.state.firstname} name="firstname" placeholder="First Name"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstname">Email:</label>
+              <input className="form-control" type="text" value={this.state.email} name="email" placeholder="Email"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstname">Password:</label>
+              <input className="form-control" type="text" value={this.state.password} name="password"placeholder="Password"/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="firstname">Age:</label>
+              <input className="form-control" type="text" value={this.state.age} name="age" placeholder="Age"/>
+            </div>
+            <NavLink
+              to="/profile"
+              type="submit"
+              className="btn btn-default" >Sign Up</NavLink>
+          </div>
+          <div className="col-xs-6">
+            <div className="form-group">
+              <label htmlFor="firstname">Last Name:</label>
+              <input className="form-control" type="text" value={this.state.lastname} name="lastname" placeholder="Last Name"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstname">Username:</label>
+              <input className="form-control" type="text" value={this.state.username} name="username" placeholder="Username"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstname">Confirm Password:</label>
+              <input className="form-control" type="text" value={this.state.password_confirmation} name="password_confirmation" placeholder="Confirm Password"/>
+            </div>
+            <div className="form-group">
+              <label htmlFor="firstname">Bio:</label>
+              <input className="form-control" type="text" value={this.state.bio} name="bio" placeholder="Bio"/>
+            </div>
+            <NavLink
+              to="/login"
+              className="pull-right"
+              >Already a user? Sign In Instead</NavLink>
+          </div>
+
+
+
       </form>
     )
   }

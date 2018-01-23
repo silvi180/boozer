@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
   // console.log("CocktailForm", props)
@@ -78,7 +79,11 @@ const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
         ingredient_name: '',
         amount: 0
       }])} className="glyphicon glyphicon-plus-sign"></span></h1>
-    <button type="submit" onClick={() => onSubmit(value)} className="btn btn-default" >Create Cocktail</button>
+    <NavLink
+      to="/search"
+      type="submit"
+      onClick={() => onSubmit(value)}
+      className="btn btn-default" >Create Cocktail</NavLink>
     </div>
   )
 }
