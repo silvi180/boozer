@@ -17,7 +17,7 @@ import React from 'react';
 
 
 const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  console.log("CocktailForm", value)
+  console.log("Edit CocktailForm", value)
 
   const onFormValueChange = (key, newVal) => {
     console.log('onFormValueChange Key', key);
@@ -29,7 +29,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
   }
 
   return(
-    <div className="col-xs-5 content">
+    <div className="col-xs-8 content">
       <h3>Edit Cocktail Form</h3>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
@@ -75,7 +75,7 @@ const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => 
                   ingredient_name: e.target.value
                 },
                 ...origArray.slice(index + 1)
-              ])} className="form-control" value={proportion.name}/>
+              ])} className="form-control" value={proportion.ingredient_name}/>
             </div>
             <div className="col-xs-6">
               <label htmlFor="amount">Quantity:</label>

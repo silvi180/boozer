@@ -192,7 +192,7 @@ class App extends Component {
     let cocktail = this.state.cocktails.find( c => c.id === drink.cocktail_id)
     console.log('selected cocktail:', cocktail);
     this.setState({
-      currentCocktail: cocktail
+      currentCocktail: drink
     })
   }
 
