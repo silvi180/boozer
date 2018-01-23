@@ -16,11 +16,8 @@ const Navbar = (props) => {
           <li><NavLink
             to="/"
             exact
+            onClick={props.handleRedirect}
             >Home</NavLink></li>
-          <li><NavLink
-            to="/search"
-            exact
-            >Search</NavLink></li>
           <li><NavLink
             to="/signup"
             exact

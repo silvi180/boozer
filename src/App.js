@@ -92,8 +92,13 @@ class App extends Component {
   handleSearch = (e) => {
     this.setState({
       searchTerm: e.target.value,
-      redirect: false,
     }, () => this.foundDrink(this.state.searchTerm));
+  }
+
+  handleRedirect = () => {
+    this.setState({
+      redirect: false,
+    })
   }
 
   foundDrink = (s) => {
@@ -128,7 +133,7 @@ class App extends Component {
   handlePostCocktail = (fields) => {
       console.log('about to post', fields);
       api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
-      //Need to update user's coctails, redirect to profile page 
+      //Need to update user's coctails, redirect to profile page
   }
 
   handleCocktailChange = (newValue) => {
@@ -219,7 +224,9 @@ class App extends Component {
       <div className="container">
         <Router>
           <div>
-            <Navbar user={this.state.user} />
+            <Navbar
+              user={this.state.user}
+              handleRedirect={this.handleRedirect}/>
              <Route exact path="/" render={routerProps => {
                  return(
                    <div className="container content">
