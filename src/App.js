@@ -188,8 +188,8 @@ class App extends Component {
 
 
   render() {
-    console.log("App State", this.state);
-    console.log('current cocktail in state', this.state.currentCocktail);
+    // console.log("App State", this.state);
+    // console.log('current cocktail in state', this.state.currentCocktail);
 
     const searchStyle = {
       position: "fixed",
@@ -213,11 +213,13 @@ class App extends Component {
                          style={searchStyle}
                        />
                        <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-                       <MainContent
-                         currentCocktail={this.state.currentCocktail}
-                         edit={this.editCocktail}
-                         saveCocktail={this.handleSaveCocktail}
-                       />
+                       <div className="col-xs-6">
+                         <MainContent
+                           currentCocktail={this.state.currentCocktail}
+                           edit={this.editCocktail}
+                           saveCocktail={this.handleSaveCocktail}
+                           />
+                       </div>
                      </div>
                    </div>
 
@@ -273,6 +275,27 @@ class App extends Component {
                   <EditCocktailForm onChange={this.handleCocktailChange}
                                 value={this.state.drinkToEdit}
                                 onSubmit={this.handleUpdateCocktail} />
+                );
+              }}
+            />
+          <Route exact path="/show_cocktail" render={() => {
+                return(
+                  <div>
+                    <UserProfile
+                      user={this.state.user}
+                      selectSavedDrink={this.selectSavedDrink}
+                      removeSavedDrink={this.removeSavedDrink}
+                      editSavedDrink={this.handleUpdateCocktail}
+                      />
+                    <div className="col-xs-1"></div>
+                    <div className= "col-xs-7 content">
+                      <MainContent
+                        currentCocktail={this.state.currentCocktail}
+                        edit={this.editCocktail}
+                        saveCocktail={this.handleSaveCocktail}
+                        />
+                      </div>
+                  </div>
                 );
               }}
             />

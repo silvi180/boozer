@@ -11,16 +11,18 @@ const UserProfile = (props) => {
         <div key={drink.user_drink_id}>
 
           <div className="input-group panel panel-default">
-              <div
+              <NavLink
+                to="/show_cocktail"
+                exact
                 onClick={() => props.selectSavedDrink(drink)}>
                 {drink.saved_drink_name}
-              </div>
+              </NavLink>
 
 
 
             <div className="input-group-btn">
               <NavLink
-                to="/profile_edit"
+                to="/edit_cocktail"
                 exact
                 onClick={() => props.editSavedDrink(drink)}
                 className="btn btn-default glyphicon glyphicon-pencil"

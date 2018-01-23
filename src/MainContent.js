@@ -31,7 +31,7 @@ const MainContent = (props) => {
   // }
 
   return (
-    <div className="col-xs-5">
+    <div>
       <h2>{props.currentCocktail.name}
         <span onClick={() => props.saveCocktail(props.currentCocktail)} className="glyphicon glyphicon-star-empty pull-right"></span>
       </h2>
