@@ -8,9 +8,9 @@ const UserProfile = (props) => {
     savedCocktails = props.user.saved_drinks.map((drink, i) => {
 
       return (
-        <div key={drink.user_drink_id}>
+        <div key={drink.user_drink_id} className="row col-xs-12">
 
-          <div className="input-group panel panel-default">
+          <div className="panel-heading teal">
               <NavLink
                 to="/show_cocktail"
                 exact
@@ -20,16 +20,16 @@ const UserProfile = (props) => {
 
 
 
-            <div className="input-group-btn">
+            <div className="pull-right">
               <NavLink
                 to="/edit_cocktail"
                 exact
                 onClick={() => props.editSavedDrink(drink)}
-                className="btn btn-default glyphicon glyphicon-pencil"
+                className="glyphicon glyphicon-pencil margin-left"
                 >
               </NavLink>
 
-              <button onClick={() => props.removeSavedDrink(drink.user_drink_id)} className="btn btn-default glyphicon glyphicon-trash"></button>
+              <i onClick={() => props.removeSavedDrink(drink.user_drink_id)} className="glyphicon glyphicon-trash margin-left"></i>
             </div>
           </div>
 
