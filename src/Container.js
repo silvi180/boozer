@@ -134,7 +134,13 @@ class Container extends Component {
 // form submits 'saved_drink_name', but api expects 'name' - FIXED in UsersController
   handlePostCocktail = (fields) => {
       console.log('about to post', fields);
-      api.apiData.updateCurrentCocktail(fields).then(resp => console.log("PATCH response", resp))
+      api.apiData.updateCurrentCocktail(fields)
+        .then(resp => {
+          this.setState({
+            currentCocktail: this.state.drinkToEdit
+          })
+        })
+        .then(() => this.forNowGetUser())
 
       //Need to update user's cocktails, redirect to profile page
   }
