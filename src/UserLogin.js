@@ -52,6 +52,7 @@ export default class Login extends React.Component {
             <input className="form-control" type="password" id="password" placeholder="Password" value={this.state.fields.password}/>
           </div>
           <NavLink
+            onSubmit={this.login}
             to="/profile"
             type="submit"
             className="btn btn-default" >Login</NavLink>

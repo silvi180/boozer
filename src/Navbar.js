@@ -19,6 +19,14 @@ const Navbar = (props) => {
             onClick={props.handleRedirect}
             >Home</NavLink></li>
           <li><NavLink
+            to="/new_cocktail"
+            exact
+            >Create New Cocktail</NavLink></li>
+          <li><NavLink
+            to="/profile"
+            exact
+            >Profile</NavLink></li>
+          <li><NavLink
             to="/signup"
             exact
             >Sign Up</NavLink></li>
@@ -26,14 +34,6 @@ const Navbar = (props) => {
             to="/login"
             exact
             >Log In</NavLink></li>
-          <li><NavLink
-            to="/profile"
-            exact
-            >Profile</NavLink></li>
-          <li><NavLink
-            to="/new_cocktail"
-            exact
-            >Create New Cocktail</NavLink></li>
         </ul>
 
 

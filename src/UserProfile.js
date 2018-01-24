@@ -29,7 +29,10 @@ const UserProfile = (props) => {
                 >
               </NavLink>
 
-              <i onClick={() => props.removeSavedDrink(drink.user_drink_id)} className="glyphicon glyphicon-trash margin-left"></i>
+              <NavLink
+                to="/profile"
+                onClick={() => props.removeSavedDrink(drink.user_drink_id)}
+                className="glyphicon glyphicon-trash margin-left"></NavLink>
             </div>
           </div>
 
