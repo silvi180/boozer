@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom'
 
 export default class Login extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       error: false,
@@ -29,16 +29,13 @@ export default class Login extends React.Component {
 
   login = (e) => {
     e.preventDefault();
-    api.apiData.login(this.state.fields).then( data => {
-      if (data.error) {
-        this.setState({ error: true })
-      } else {
-        console.log(data)
-      }
-    })
+    api.apiData.login(this.state.fields)
+    .then(data => this.props.handleLogin(data))
+
   }
 
   render () {
+    console.log('User Login Props', this.props);
     return (
       <div className="col-md-6 content">
         <form onChange={this.handleChange} onSubmit={this.login}>
@@ -51,11 +48,11 @@ export default class Login extends React.Component {
             <label htmlFor="password">Password:</label>
             <input className="form-control" type="password" id="password" placeholder="Password" value={this.state.fields.password}/>
           </div>
-          <NavLink
+          <button
             onSubmit={this.login}
-            to="/profile"
+
             type="submit"
-            className="btn btn-default" >Login</NavLink>
+            className="btn btn-default" >Login</button>
           <NavLink
             to="/signup"
             className="pull-right"

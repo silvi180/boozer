@@ -40,10 +40,18 @@ class Container extends Component {
     }
   }
 
+  componentWillMount() {
+    this.handleUpdateUser()
+  }
+
   componentDidMount() {
-    this.getCocktails()
-    this.getIngredients()
-    this.forNowGetUser()
+    this.setState({
+      user: this.props.login,
+    }, () => {
+      this.getCocktails()
+      this.getIngredients()
+      this.forNowGetUser()
+    })
   }
 
 // get Data from Api
@@ -64,9 +72,19 @@ class Container extends Component {
   }
 
   forNowGetUser = () => {
-    fetch('http://localhost:3000/api/v1/users/1')
+    if (this.state.user) {
+
+    fetch(`http://localhost:3000/api/v1/users/${this.state.user.id}`)
       .then(resp => resp.json())
       .then(resp => this.setState({ user: resp }))
+    }
+  }
+
+  handleUpdateUser = (user) => {
+    console.log('updating user', this.props.login);
+    this.setState({
+      user: this.props.login.user
+    })
   }
 // this also exists in api.apiData.createUser(fields) - not currently being used
 //message from silvia: createUser passes down to SignUp component
@@ -123,6 +141,7 @@ class Container extends Component {
     .then(() => {
       this.getCocktails()
       this.getIngredients()
+      this.forNowGetUser()
     })
   }
 
@@ -221,7 +240,7 @@ class Container extends Component {
 
 
   render() {
-    console.log("App State Drink to Edit", this.state.drinkToEdit);
+    console.log("App State User", this.state.user);
     // console.log('current cocktail in state', this.state.currentCocktail);
 
     const searchStyle = {
@@ -236,6 +255,7 @@ class Container extends Component {
           <div>
             <Navbar
               user={this.state.user}
+              logout={this.props.logout}
               handleRedirect={this.handleRedirect}/>
              <Route exact path="/" render={routerProps => {
                  return(

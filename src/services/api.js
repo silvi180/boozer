@@ -8,6 +8,14 @@ const headers = {
   'Accept': 'application/json'
 }
 
+const currentUser = () => {
+  return fetch(`${API_ROOT}/current_user`, {
+    headers: {
+      Authorization: token
+    }
+  }).then(resp => resp.json())
+}
+
 const getCocktails = () => {
   return fetch(`${API_ROOT}/cocktails`)
   .then(resp => resp.json())
@@ -69,6 +77,7 @@ export default{
     showDrink,
     createNewCocktail,
     updateCurrentCocktail,
-    login
+    login,
+    currentUser
   }
 }
