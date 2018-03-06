@@ -3,13 +3,15 @@ import { NavLink } from 'react-router-dom'
 
 
 const Navbar = (props) => {
-
+  const drinkStyle = {
+    color: 'rgb(0,191,251)',
+  }
 
   return (
     <nav className="navbar navbar-inverse navbar-fixed-top">
       <div className="container-fluid">
         <div className="navbar-header">
-          <h3><span className="glyphicon glyphicon-chevron-left pull-left"></span>Cocktails</h3>
+          <a className="navbar-brand"><span className="glyphicon glyphicon glyphicon-glass pull-left" style={drinkStyle}>  </span><span className="margin-left">  </span>Boozer</a>
         </div>
 
         <ul className="nav navbar-nav">

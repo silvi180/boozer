@@ -39,6 +39,7 @@ export default class Login extends React.Component {
     return (
       <div className="col-md-6 content">
         <form onChange={this.handleChange} onSubmit={this.login}>
+          <h1>Boozer</h1>
           <h3>Sign In</h3>
           <div className="form-group">
             <label htmlFor="username">Username:</label>

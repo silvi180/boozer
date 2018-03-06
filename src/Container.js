@@ -59,7 +59,8 @@ class Container extends Component {
     api.apiData.getCocktails()
     .then(json => {
       this.setState({
-        cocktails: json
+        cocktails: json,
+        currentCocktail: json[0]
       })
     })
   }
@@ -123,6 +124,7 @@ class Container extends Component {
   foundDrink = (s) => {
     const search = s.toUpperCase();
     const drinks = this.state.cocktails.filter( cocktail => (this.findByIngredient(search, cocktail.proportions) || cocktail.name.toUpperCase().includes(search)) )
+    // this.setState({ currentCocktail: drinks[0] })
     return drinks ? drinks : [];
   }
 
@@ -262,7 +264,7 @@ class Container extends Component {
                    <div className="container content">
                      <div>
                        <div className="spacer"></div>
-                       <h1 className="main-heading">Welcome to CocktailCupboard</h1>
+                       <h1 className="main-heading">Welcome to Boozer</h1>
                        <div className="row">
                          <div className="col-xs-8">
                            <h4>Search for a Cocktail...</h4>

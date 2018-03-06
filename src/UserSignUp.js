@@ -37,6 +37,7 @@ export default class SignUp extends Component {
     // console.log("handleChange", this.state)
     return (
       <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 content" >
+        <h1>Boozer</h1>
         <h3>Sign Up</h3>
           <div className="col-xs-6">
             <div className="form-group">
