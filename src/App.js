@@ -41,7 +41,7 @@ class App extends React.Component {
   render(){
     console.log('App State', this.state.auth.currentUser);
     return(
-      <Router >
+      <Router basename="/boozer/">
         <div className="container">
 
           {!Object.keys(this.state.auth.currentUser).length &&
