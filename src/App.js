@@ -12,10 +12,7 @@ class App extends React.Component {
   state = { auth: { currentUser: {} } };
 
   componentDidMount() {
-    // if(!api.apiData.auth){
-    //   // localStorage.clear();
-    //   this.handleLogout()
-    // }
+
     if (localStorage.getItem('token')) {
       api.apiData.currentUser().then(user => {
         console.log('response is', user);
@@ -68,10 +65,6 @@ class App extends React.Component {
               logout={this.handleLogout}
               login={this.state.auth.currentUser}/>
           }
-
-
-
-
 
         </div>
       </Router>

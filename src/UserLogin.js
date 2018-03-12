@@ -35,7 +35,6 @@ export default class Login extends React.Component {
   }
 
   render () {
-    console.log('User Login Props', this.props);
     return (
       <div className="col-md-6 content">
         <form onChange={this.handleChange} onSubmit={this.login}>

@@ -1,12 +1,9 @@
 import React from 'react';
 
 const MainContent = (props) => {
-  console.log('MainContent', props.currentCocktail.proportions);
-  console.log('MainContent AdjustedProportions', props.currentCocktail.adjusted_proportions);
-  let proportions
+  let proportions;
 
   if (props.currentCocktail.proportions) {
-    console.log('Proportions');
     proportions = props.currentCocktail.proportions.map((pro, i) => {
       return(
         <div key={i}>
@@ -15,18 +12,6 @@ const MainContent = (props) => {
       )
     })
   }
-
-  // if (props.currentCocktail.adjusted_proportions && props.currentCocktail.adjusted_proportions.length > 0) {
-  //   console.log('Adjusted Proportions');
-  //   proportions = props.currentCocktail.adjusted_proportions.map((pro, i) => {
-  //     return(
-  //       <div key={i}>
-  //         <p>{pro.amount} {pro.ingredient_name}</p>
-  //       </div>
-  //     )
-  //   })
-  // }
-
 
   return (
     <div>

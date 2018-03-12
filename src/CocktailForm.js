@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  // console.log("CocktailForm", props)
 
   const onFormValueChange = (key, newVal) => {
     onChange({

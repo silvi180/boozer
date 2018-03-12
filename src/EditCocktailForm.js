@@ -2,27 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 
-
-
-// saved_drink_cocktail_id
-//
-// saved_drink_description
-//
-// saved_drink_id
-//
-// saved_drink_instructions
-//
-// saved_drink_name
-//
-// saved_drink_source
-
-
 const EditCocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
-  console.log("Edit CocktailForm", value)
 
   const onFormValueChange = (key, newVal) => {
-    console.log('onFormValueChange Key', key);
-    console.log('onFormValueChange newVal', newVal);
     onChange({
       ...value,
       [key]: newVal,

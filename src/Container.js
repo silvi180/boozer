@@ -124,7 +124,6 @@ class Container extends Component {
   foundDrink = (s) => {
     const search = s.toUpperCase();
     const drinks = this.state.cocktails.filter( cocktail => (this.findByIngredient(search, cocktail.proportions) || cocktail.name.toUpperCase().includes(search)) )
-    // this.setState({ currentCocktail: drinks[0] })
     return drinks ? drinks : [];
   }
 
@@ -374,13 +373,6 @@ class Container extends Component {
 
           </div>
         </Router>
-
-
-
-
-
-
-
       </div>
     )
   }
