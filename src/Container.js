@@ -242,9 +242,6 @@ class Container extends Component {
 
 
   render() {
-    console.log("App State User", this.state.user);
-    // console.log('current cocktail in state', this.state.currentCocktail);
-
     const searchStyle = {
       position: "fixed",
       top: 0,

@@ -16,10 +16,6 @@
 body {
   padding-top: 70px;
   margin: 0;
-  background: url(../img/bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover
 }
 
@@ -55,35 +51,7 @@ body {
 }
 
 
-
-/* .main {
-  margin-top: 100px;
-  min-height: 600px;
-  background: lightblue;
-} */
-
 .parent{
   height: 700px;
   overflow: scroll;
 }
-
-/* .parent {
-  max-height: 100px;
-  background-color: pink;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 3000px;
-  overflow: scroll;
-
-} */
-
-/* .child {
-  min-height: 75px;
-  width: 75px;
-  border: 1px solid lightgrey;
-  display: inline-block;
-  float: left;
-
-} */

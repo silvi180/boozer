@@ -34,7 +34,6 @@ export default class SignUp extends Component {
   }
 
   render() {
-    // console.log("handleChange", this.state)
     return (
       <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 content" >
         <h1>Boozer</h1>
@@ -84,9 +83,6 @@ export default class SignUp extends Component {
               className="pull-right"
               >Already a user? Sign In Instead</NavLink>
           </div>
-
-
-
       </form>
     )
   }
