@@ -1,4 +1,9 @@
-
+#root {
+  height: 100vh;
+}
+.container {
+  height: 100%;
+}
 
 .App-header {
   background-color: #222;
@@ -11,13 +16,19 @@
   left: 0;
   bottom: 0;
 }
+  /* silvia's css */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+}
+
+
+
+
+
 
   /* our css */
-body {
-  padding-top: 70px;
-  margin: 0;
-  background-size: cover
-}
 
 .content {
   background-color: rgba(211,211,211,0.85);
