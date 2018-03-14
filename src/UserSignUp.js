@@ -80,7 +80,6 @@ export default class SignUp extends Component {
             </div>
             <NavLink
               to="/login"
-              className="pull-right"
               >Already a user? Sign In Instead</NavLink>
           </div>
       </form>
