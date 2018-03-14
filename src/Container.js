@@ -249,7 +249,7 @@ class Container extends Component {
     }
 
     return (
-      <div className="container">
+      <React.Fragment>
         <Router>
           <div>
             <Navbar
@@ -258,7 +258,7 @@ class Container extends Component {
               handleRedirect={this.handleRedirect}/>
              <Route exact path="/" render={routerProps => {
                  return(
-                   <div className="container content">
+                   <div className="container-fluid content">
                        <h1>Welcome to Boozer</h1>
                        <div className="row">
                          <div className="col-xs-12">
@@ -281,7 +281,7 @@ class Container extends Component {
               />
             <Route exact path="/search" render={routerProps => {
                  return(
-                   <div className="container content">
+                   <div className="container-fluid content">
                      <div>
                        <div className="navbar-form pull-right">
                          <SearchBar
@@ -370,7 +370,7 @@ class Container extends Component {
 
           </div>
         </Router>
-      </div>
+      </React.Fragment>
     )
   }
 }

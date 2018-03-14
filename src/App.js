@@ -37,26 +37,14 @@ class App extends React.Component {
     //< Router basename "/boozer/"> why?
     return(
       <Router basename="/">
-        <div className="container">
+        <div className="container-fluid">
 
           {!Object.keys(this.state.auth.currentUser).length &&
-              <div>
-                <Route exact path="/" render={() => {
-                    return(
-                      <Login handleLogin={this.handleLogin}/>
-
-                    )
-                  }}
-                />
-                <Route exact path="/login" render={() => {
-                    return(
-                      <Login handleLogin={this.handleLogin}/>
-
-                    )
-                  }}
-                />
-                <Route exact path="/signup" component={SignUp} />
-              </div>
+            <React.Fragment>
+              <Route exact path="/" render={() =>  <Login handleLogin={this.handleLogin}/>} />
+              <Route exact path="/login" render={() =>  <Login handleLogin={this.handleLogin}/>} />
+              <Route exact path="/signup" component={SignUp} />
+            </React.Fragment>
           }
           {Object.keys(this.state.auth.currentUser).length &&
             <Container

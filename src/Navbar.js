@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar-fixed-top">
-      <div className="container-fluid">
+
         <div className="navbar-header">
           <a className="navbar-brand"><span className="glyphicon glyphicon glyphicon-glass pull-left" style={drinkStyle}></span><span className="margin-left"></span>Boozer</a>
         </div>
@@ -37,7 +37,7 @@ const Navbar = (props) => {
           <li onClick={props.logout}><a href="/"><span className="glyphicon glyphicon-log-in"></span> LogOut</a></li>
         </ul>
 
-      </div>
+
     </nav>
   );
 }
