@@ -90,6 +90,9 @@ form h3 {
   margin: auto;
   margin-top: 50px;
 }
+a {
+  color: #525252;
+}
 
 /* search bar */
 .content.home {
