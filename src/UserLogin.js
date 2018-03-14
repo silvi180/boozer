@@ -50,11 +50,10 @@ export default class Login extends React.Component {
             onSubmit={this.login}
             type="submit"
             className="btn btn-default" >Login</button>
-          <NavLink
-            className="pull-right"
-            to="/signup"
-            >Don't have an account? Sign Up Instead</NavLink>
         </form>
+        <NavLink
+          to="/signup"
+          >Don't have an account? Sign Up Instead</NavLink>
       </div>
     )
   }
