@@ -251,33 +251,23 @@ class Container extends Component {
     return (
       <React.Fragment>
         <Router>
-          <div>
-            <Navbar
-              user={this.state.user}
-              logout={this.props.logout}
-              handleRedirect={this.handleRedirect}/>
-             <Route exact path="/" render={routerProps => {
-                 return(
-                   <div className="content home">
-                       <h1>Welcome to Boozer</h1>
-                       <div className="row">
-                         <div className="col-xs-12">
-                           <h4>Search for a Cocktail...</h4>
-                           <SearchBar
-                             handleSearch={this.handleSearch}
-                             searchTerm={this.state.searchTerm}
-                             submit={this.handleSearchSubmit}
-                             style={searchStyle}
-                             />
-                       </div>
-                     </div>
-                     {this.state.redirect &&
-                       <Redirect to='/search' /> }
-
-                   </div>
-
-                 );
-               }}
+          <React.Fragment>
+            <Navbar user={this.state.user} logout={this.props.logout} handleRedirect={this.handleRedirect}/>
+             <Route exact path="/" render={ routerProps => {
+                  return (
+                    <div className="content home">
+                      <h1>Welcome to Boozer</h1>
+                      <div className="row">
+                        <div className="col-xs-12">
+                          <h4>Search for a Cocktail...</h4>
+                          <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handleSearchSubmit} style={searchStyle} />
+                        </div>
+                      </div>
+                     { this.state.redirect && <Redirect to='/search' /> }
+                    </div>
+                  );
+                }
+              }
               />
             <Route exact path="/search" render={routerProps => {
                  return(
@@ -368,7 +358,7 @@ class Container extends Component {
               }}
             />
 
-          </div>
+          </React.Fragment>
         </Router>
       </React.Fragment>
     )
