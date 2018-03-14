@@ -41,10 +41,10 @@ export default class Login extends React.Component {
           <h1>Boozer</h1>
           <h3>Sign In</h3>
           <div className="sign form-group">
-            <input className="sign form-control" type="text" id="username" placeholder="username" value={this.state.fields.username}/>
+            <input className="sign form-control" type="text" id="username" placeholder="username" value={this.state.fields.username} autocomplete="off"/>
           </div>
           <div className="sign form-group">
-            <input className="sign form-control" type="password" id="password" placeholder="password" value={this.state.fields.password}/>
+            <input className="sign form-control" type="password" id="password" placeholder="password" value={this.state.fields.password} autocomplete="off"/>
           </div>
           <button
             onSubmit={this.login}
