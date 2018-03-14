@@ -1,3 +1,7 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 2px;
+}
 
 #root {
   height: 100vh;
@@ -7,7 +11,6 @@
   padding-left: 0;
   padding-right: 0;
 }
-
 .App-header {
   background-color: #222;
   width: 100%;
@@ -19,13 +22,9 @@
   left: 0;
   bottom: 0;
 }
-  /* silvia's css */
 
-body {
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 2px;
-}
 
+/* login form */
 .sign.form-control {
   width: 95%;
   padding: 6px 12px;
@@ -34,8 +33,6 @@ body {
   border-radius: 5px;
   box-shadow: inset 0px 0px 0px 0px rgb(0,0,0);
 }
-
-
 .sign.form-group {
   margin-bottom: 43px;
 }
@@ -87,15 +84,27 @@ form h3 {
   color: rgb(0, 0, 0);
 }
 
-
-
-
-
-.spacer {
-  height: 100px;
+/* search bar */
+.container.content {
+  margin: auto;
+  margin-top: 12vh;
+  border-radius: 2px;
+  box-shadow: none;
+  text-align: center;
+}
+.col-xs-12 {
+  margin-top: 56px;
+  width: 100%;
+}
+h4 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 27px;
 }
 
+
 .main-heading {
+  margin: auto;
   margin-bottom: 40px;
 }
 

@@ -259,11 +259,9 @@ class Container extends Component {
              <Route exact path="/" render={routerProps => {
                  return(
                    <div className="container content">
-                     <div>
-                       <div className="spacer"></div>
                        <h1 className="main-heading">Welcome to Boozer</h1>
                        <div className="row">
-                         <div className="col-xs-8">
+                         <div className="col-xs-12">
                            <h4>Search for a Cocktail...</h4>
                            <SearchBar
                              handleSearch={this.handleSearch}
@@ -271,9 +269,7 @@ class Container extends Component {
                              submit={this.handleSearchSubmit}
                              style={searchStyle}
                              />
-                         </div>
                        </div>
-                       <div className="spacer"></div>
                      </div>
                      {this.state.redirect &&
                        <Redirect to='/search' /> }
