@@ -6,12 +6,15 @@ const Navbar = (props) => {
   const drinkStyle = {
     color: 'rgb(0,191,251)',
   }
+  const overrideStyle = {
+    color: 'rgb(0, 0, 0)'
+  }
 
   return (
-    <nav className="navbar navbar-inverse navbar-fixed-top">
+    <nav className="navbar-fixed-top">
       <div className="container-fluid">
         <div className="navbar-header">
-          <a className="navbar-brand"><span className="glyphicon glyphicon glyphicon-glass pull-left" style={drinkStyle}>  </span><span className="margin-left">  </span>Boozer</a>
+          <a className="navbar-brand" style={overrideStyle}><span className="glyphicon glyphicon glyphicon-glass pull-left" style={drinkStyle}></span><span className="margin-left"></span>Boozer</a>
         </div>
 
         <ul className="nav navbar-nav">

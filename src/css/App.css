@@ -63,9 +63,6 @@ form h3 {
   color: white;
   letter-spacing: 3px;
 }
-.pull-right {
-  margin-top: 7px;
-}
 .content {
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -74,18 +71,15 @@ form h3 {
   margin-top: 20vh;
   text-align: right;
 }
-
-  /* our css */
-
-
-/* .content::before {
-content: '';
-} */
-
-.navbar {
-  color: white;
-  border-bottom: 3px solid rgb(0,191,251);
+.navbar-fixed-top {
+  /* top: 0;
+  border-width: 0 0 1px; */
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.08);
 }
+
+
+
+
 
 .spacer {
   height: 100px;
