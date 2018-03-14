@@ -40,16 +40,16 @@ export default class Login extends React.Component {
         <form onChange={this.handleChange} onSubmit={this.login}>
           <h1>Boozer</h1>
           <h3>Sign In</h3>
-          <div className="form-group">
-            <input className="form-control" type="text" id="username" placeholder="username" value={this.state.fields.username}/>
+          <div className="sign form-group">
+            <input className="sign form-control" type="text" id="username" placeholder="username" value={this.state.fields.username}/>
           </div>
-          <div className="form-group">
-            <input className="form-control" type="password" id="password" placeholder="password" value={this.state.fields.password}/>
+          <div className="sign form-group">
+            <input className="sign form-control" type="password" id="password" placeholder="password" value={this.state.fields.password}/>
           </div>
           <button
             onSubmit={this.login}
             type="submit"
-            className="btn btn-default" >Login</button>
+            className="sign btn btn-default" >Login</button>
         </form>
         <NavLink
           to="/signup"
