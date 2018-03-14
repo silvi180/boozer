@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = (props) => {
   const drinkStyle = {
-    color: 'rgb(0,191,251)',
+    color: 'inherit',
   }
-  
+
   return (
     <nav className="navbar-fixed-top">
       <div className="container-fluid">

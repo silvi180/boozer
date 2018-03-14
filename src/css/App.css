@@ -17,6 +17,10 @@ body {
   color: white;
   border: none;
 }
+.margin-left {
+  margin-left: 10px;
+}
+
 
 /* login form */
 .sign.form-control {
@@ -25,7 +29,7 @@ body {
   border: none;
   border-bottom: 1px solid #cecccc;
   border-radius: 5px;
-  box-shadow: inset 0px 0px 0px 0px rgb(0,0,0);
+  box-shadow: inset 0px 0px 0px 0px #000000;
 }
 .sign.form-group {
   margin-bottom: 43px;
@@ -64,10 +68,8 @@ form h3 {
   text-align: right;
 }
 .navbar-fixed-top {
+  color: #7a7878;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.08);
-}
-.navbar-brand {
-  color: rgb(0, 0, 0);
 }
 
 /* search bar */
@@ -89,22 +91,13 @@ h4 {
 }
 
 
-.main-heading {
-  margin: auto;
-  margin-bottom: 40px;
-}
-
-.margin-left {
-  margin-left: 10px;
-}
-
-.panel-heading {
-  border-bottom: 1px solid rgb(211,211,211);
-}
-
-
-
+/* cocktail container */
 .parent{
   height: 700px;
   overflow: scroll;
+}
+
+/* cocktail card  + user profile*/
+.panel-heading {
+  border-bottom: 1px solid rgb(211,211,211);
 }

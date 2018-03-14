@@ -259,7 +259,7 @@ class Container extends Component {
              <Route exact path="/" render={routerProps => {
                  return(
                    <div className="container content">
-                       <h1 className="main-heading">Welcome to Boozer</h1>
+                       <h1>Welcome to Boozer</h1>
                        <div className="row">
                          <div className="col-xs-12">
                            <h4>Search for a Cocktail...</h4>
