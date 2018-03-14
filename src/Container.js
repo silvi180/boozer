@@ -258,7 +258,7 @@ class Container extends Component {
               handleRedirect={this.handleRedirect}/>
              <Route exact path="/" render={routerProps => {
                  return(
-                   <div className="container-fluid content">
+                   <div className="content home">
                        <h1>Welcome to Boozer</h1>
                        <div className="row">
                          <div className="col-xs-12">
