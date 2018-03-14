@@ -88,7 +88,6 @@ class Container extends Component {
     })
   }
 // this also exists in api.apiData.createUser(fields) - not currently being used
-//message from silvia: createUser passes down to SignUp component
   createUser = (fields) => {
     fetch('http://localhost:3000/api/v1/users',{
       method: 'POST',
@@ -109,7 +108,7 @@ class Container extends Component {
       .then(json => this.setState({ currentCocktail: json }));
   }
 
-  handleSearch = (e) => {
+  handleSearch = e => {
     this.setState({
       searchTerm: e.target.value,
     }, () => this.foundDrink(this.state.searchTerm));
@@ -122,8 +121,10 @@ class Container extends Component {
   }
 
   foundDrink = (s) => {
+    console.log('this.state', this.state)
     const search = s.toUpperCase();
     const drinks = this.state.cocktails.filter( cocktail => (this.findByIngredient(search, cocktail.proportions) || cocktail.name.toUpperCase().includes(search)) )
+    console.log('founddrink', drinks)
     return drinks ? drinks : [];
   }
 
@@ -197,7 +198,7 @@ class Container extends Component {
 
   handleSearchSubmit = (e) => {
     e.preventDefault()
-    console.log('handling submit', this.props);
+    console.log('handling submit', e);
 
     this.setState({
       redirect: true

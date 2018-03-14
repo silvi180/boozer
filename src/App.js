@@ -5,7 +5,7 @@ import SignUp from './UserSignUp';
 import Login from './UserLogin';
 
 
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 class App extends React.Component {
@@ -15,7 +15,6 @@ class App extends React.Component {
 
     if (localStorage.getItem('token')) {
       api.apiData.currentUser().then(user => {
-        console.log('response is', user);
         if (!user.error) {
           this.setState({ auth: { currentUser: user } });
         }
@@ -24,7 +23,6 @@ class App extends React.Component {
   }
 
   handleLogin = user => {
-    console.log('Login', user);
     localStorage.setItem('token', user.token);
     this.setState({ auth: { currentUser: user } });
   };
@@ -32,13 +30,13 @@ class App extends React.Component {
   handleLogout = () => {
     localStorage.removeItem('token');
     this.setState({ auth: { currentUser: {} } });
-    console.log(this.props.history)
   };
 
   render(){
     console.log('App State', this.state.auth.currentUser);
+    //< Router basename "/boozer/"> why?
     return(
-      <Router basename="/boozer/">
+      <Router basename="/">
         <div className="container">
 
           {!Object.keys(this.state.auth.currentUser).length &&
