@@ -19,9 +19,6 @@ const UserProfile = (props) => {
                   onClick={() => props.selectSavedDrink(drink)}>
                   {drink.name}
                 </NavLink>
-
-
-
               <div className="pull-right">
                 <NavLink
                   to="/edit_cocktail"
@@ -52,7 +49,7 @@ const UserProfile = (props) => {
         props.user ?
 
           <div className="col-xs-4 content">
-            <h3>User Profile</h3>
+            <h3>Profile</h3>
             <h4>{props.user.firstname} {props.user.lastname}</h4>
             <h5><b>Email:</b> {props.user.email}</h5>
             <h5><b>Age:</b> {props.user.age}</h5>

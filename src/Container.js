@@ -283,7 +283,7 @@ class Container extends Component {
                            />
                        </div>
                        <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-                       <div className="col-xs-6">
+                       <div className="col-xs-6 view">
                          <MainContent
                            currentCocktail={this.state.currentCocktail}
                            edit={this.editCocktail}

@@ -6,9 +6,9 @@ const MainContent = (props) => {
   if (props.currentCocktail.proportions) {
     proportions = props.currentCocktail.proportions.map((pro, i) => {
       return(
-        <div key={i}>
-          <p>{pro.amount} {pro.ingredient_name}</p>
-        </div>
+        <React.Fragment key={i}>
+          <li>{pro.amount} {pro.ingredient_name}</li>
+        </React.Fragment>
       )
     })
   }
@@ -21,7 +21,7 @@ const MainContent = (props) => {
       <h4>Description:</h4>
         <p>{props.currentCocktail.description}</p>
       <h4>Ingredients:</h4>
-        {proportions}
+        <ul>{proportions}</ul>
       <h4>Instructions:</h4>
         <p>{props.currentCocktail.instructions}</p>
       <h4>Source:</h4>

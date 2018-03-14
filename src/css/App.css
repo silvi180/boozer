@@ -3,6 +3,13 @@ body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
 }
+ul {
+  list-style-type: none;
+  margin-bottom: 25px;
+}
+p {
+  margin: 0px 0px 28px;
+}
 #root {
   height: 100vh;
 }
@@ -17,7 +24,7 @@ body {
   box-shadow: 3px 7px 20px 1px rgba(64, 30, 30, 0.1);
   padding: 100px 80px;
   padding-bottom: 37px;
-  margin-top: 18vh;
+  margin-top: 150px;
   margin-left: 100px;
   text-align: center;
 }
@@ -199,6 +206,9 @@ textarea.new-cocktail.form-control {
 .parent{
   height: 700px;
   overflow: scroll;
+}
+.col-xs-6.view {
+
 }
 
 /* cocktail card  + user profile*/
