@@ -14,7 +14,7 @@ const UserProfile = (props) => {
 
             <div className="panel-heading">
                 <NavLink
-                  to="/show_cocktail"
+                  to="/profile"
                   exact
                   onClick={() => props.selectSavedDrink(drink)}>
                   {drink.name}

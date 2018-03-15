@@ -218,10 +218,7 @@ class Container extends Component {
       .then(() => this.forNowGetUser())
   }
 
-  selectSavedDrink = (drink) => {
-    console.log('this is the saved drink', drink);
-    let cocktail = this.state.cocktails.find( c => c.id === drink.cocktail_id)
-    console.log('selected cocktail:', cocktail);
+  selectSavedDrink = drink => {
     this.setState({
       currentCocktail: drink
     })
@@ -340,6 +337,20 @@ class Container extends Component {
                   <EditCocktailForm onChange={this.handleUpdateChange}
                                 value={this.state.drinkToEdit}
                                 onSubmit={this.handlePostCocktail} />
+                );
+              }}
+            />
+          <Route exact path="/show_cocktail" render={() => {
+                return(
+                  <div className="row margin-top">
+                    <div className= "col-md-8">
+                      <MainContent
+                        currentCocktail={this.state.currentCocktail}
+                        edit={this.editCocktail}
+                        saveCocktail={this.handleSaveCocktail}
+                        />
+                    </div>
+                  </div>
                 );
               }}
             />
