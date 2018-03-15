@@ -12,7 +12,7 @@ const UserProfile = (props) => {
         return (
           <div key={drink.user_drink_id} className="row col-xs-12">
 
-            <div className="panel-heading teal">
+            <div className="panel-heading">
                 <NavLink
                   to="/show_cocktail"
                   exact
@@ -47,17 +47,15 @@ const UserProfile = (props) => {
 
       return(
         props.user ?
-
-          <div className="col-xs-4 content">
-            <h3>Profile</h3>
-            <h4>{props.user.firstname} {props.user.lastname}</h4>
-            <h5><b>Email:</b> {props.user.email}</h5>
-            <h5><b>Age:</b> {props.user.age}</h5>
-            <h5><b>Bio:</b> {props.user.bio}</h5>
-            <h5><b>Saved Cocktails:</b></h5>
-            <div>
-              {savedCocktails}
-            </div>
+          <div className="col-md-4">
+            <img src="./img/pexels-photo-616834.jpg" alt="default pic"/>
+            <h3>{props.user.firstname} {props.user.lastname}</h3>
+            <h5>About</h5>
+            <p>{props.user.bio}</p>
+            <h5>Contact</h5>
+            <p>Email: {props.user.email}</p>
+            <h5>Saved Drinks</h5>
+            { savedCocktails }
           </div>
           :
           <h1>Hello!</h1>

@@ -338,21 +338,20 @@ class Container extends Component {
             />
           <Route exact path="/show_cocktail" render={() => {
                 return(
-                  <div>
+                  <div className="row margin-top">
                     <UserProfile
                       user={this.state.user}
                       selectSavedDrink={this.selectSavedDrink}
                       removeSavedDrink={this.removeSavedDrink}
                       editSavedDrink={this.handleUpdateCocktail}
                       />
-                    <div className="col-xs-1"></div>
-                    <div className= "col-xs-7 content">
+                    <div className= "col-md-8">
                       <MainContent
                         currentCocktail={this.state.currentCocktail}
                         edit={this.editCocktail}
                         saveCocktail={this.handleSaveCocktail}
                         />
-                      </div>
+                    </div>
                   </div>
                 );
               }}
