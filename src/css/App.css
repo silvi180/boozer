@@ -2,6 +2,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   letter-spacing: 2px;
+  background-color: #f9f9f9;
 }
 ul {
   list-style-type: none;
@@ -93,6 +94,13 @@ form h3 {
   color: white;
   letter-spacing: 3px;
 }
+/* signup form */
+/* .col-md-12.content {
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  padding: 100px 80px;
+  margin-top: 150px;
+} */
 
 
 
@@ -103,6 +111,9 @@ form h3 {
   right: 0;
   margin: auto;
   margin-top: 50px;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+  border-radius: 150px;
 }
 a {
   color: #525252;
@@ -142,7 +153,7 @@ h4 {
 
 /* cocktail create */
 .col-xs-5.content.create-form, .edit-form {
-  position: absolute; 
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -152,7 +163,7 @@ h4 {
   box-shadow: 3px 7px 20px 1px rgba(64, 30, 30, 0.1);
 
   padding: 0;
-  margin: 0;
+  margin-left: 1.2%;
   margin-top: 18vh;
   text-align: center;
   width: 90%;
@@ -171,11 +182,11 @@ h4 {
 }
 .row.name {
   width: 30%;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 .row.instructions {
   width: 57%;
-  padding-left: 60px;
+  padding-left: 75px;
   overflow-y: scroll;
   box-shadow: inset 9px -3px 5px 3px rgba(0, 0, 0, 0.03);
 }

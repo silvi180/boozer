@@ -272,7 +272,6 @@ class Container extends Component {
             <Route exact path="/search" render={routerProps => {
                  return(
                    <div className="container-fluid content">
-                     <div>
                        <div className="navbar-form pull-right">
                          <SearchBar
                            handleSearch={this.handleSearch}
@@ -293,7 +292,6 @@ class Container extends Component {
                        <div className="col-xs-3">
                          <SavedDrinks drinks={this.state.user.saved_drinks}/>
                        </div>
-                     </div>
                    </div>
 
                  );
@@ -311,12 +309,21 @@ class Container extends Component {
               }} />
             <Route exact path="/profile" component={() => {
                 return(
-                  <UserProfile
-                    user={this.state.user}
-                    selectSavedDrink={this.selectSavedDrink}
-                    removeSavedDrink={this.removeSavedDrink}
-                    editSavedDrink={this.handleUpdateCocktail}
-                    />
+                  <div className="row margin-top">
+                    <UserProfile
+                      user={this.state.user}
+                      selectSavedDrink={this.selectSavedDrink}
+                      removeSavedDrink={this.removeSavedDrink}
+                      editSavedDrink={this.handleUpdateCocktail}
+                      />
+                    <div className= "col-md-8">
+                      <MainContent
+                        currentCocktail={this.state.currentCocktail}
+                        edit={this.editCocktail}
+                        saveCocktail={this.handleSaveCocktail}
+                        />
+                    </div>
+                  </div>
                 )
               }} />
 
@@ -333,26 +340,6 @@ class Container extends Component {
                   <EditCocktailForm onChange={this.handleUpdateChange}
                                 value={this.state.drinkToEdit}
                                 onSubmit={this.handlePostCocktail} />
-                );
-              }}
-            />
-          <Route exact path="/show_cocktail" render={() => {
-                return(
-                  <div className="row margin-top">
-                    <UserProfile
-                      user={this.state.user}
-                      selectSavedDrink={this.selectSavedDrink}
-                      removeSavedDrink={this.removeSavedDrink}
-                      editSavedDrink={this.handleUpdateCocktail}
-                      />
-                    <div className= "col-md-8">
-                      <MainContent
-                        currentCocktail={this.state.currentCocktail}
-                        edit={this.editCocktail}
-                        saveCocktail={this.handleSaveCocktail}
-                        />
-                    </div>
-                  </div>
                 );
               }}
             />

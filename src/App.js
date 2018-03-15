@@ -39,18 +39,18 @@ class App extends React.Component {
       <Router basename="/">
         <div className="container-fluid">
 
-          {!Object.keys(this.state.auth.currentUser).length &&
+          {!Object.keys(this.state.auth.currentUser).length ?
             <React.Fragment>
               <Route exact path="/" render={() =>  <Login handleLogin={this.handleLogin}/>} />
               <Route exact path="/login" render={() =>  <Login handleLogin={this.handleLogin}/>} />
               <Route exact path="/signup" component={SignUp} />
             </React.Fragment>
-          }
-          {Object.keys(this.state.auth.currentUser).length &&
+          : ''}
+          {Object.keys(this.state.auth.currentUser).length ?
             <Container
               logout={this.handleLogout}
               login={this.state.auth.currentUser}/>
-          }
+          : ''}
 
         </div>
       </Router>

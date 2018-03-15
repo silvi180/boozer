@@ -35,10 +35,10 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-6 content" >
+      <form onChange={this.handleChange} onSubmit={(e) => this.handleSubmit(e)} className="col-md-12 content" >
         <h1>Boozer</h1>
         <h3>Sign Up</h3>
-          <div className="col-xs-6">
+          <div className="col-md-6">
             <div className="form-group">
               <label htmlFor="firstname">First Name:</label>
               <input className="form-control" type="text" value={this.state.firstname} name="firstname" placeholder="First Name"/>
@@ -61,7 +61,7 @@ export default class SignUp extends Component {
               type="submit"
               className="btn btn-default" >Sign Up</NavLink>
           </div>
-          <div className="col-xs-6">
+          <div className="col-md-6">
             <div className="form-group">
               <label htmlFor="firstname">Last Name:</label>
               <input className="form-control" type="text" value={this.state.lastname} name="lastname" placeholder="Last Name"/>
