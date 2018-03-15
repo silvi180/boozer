@@ -141,7 +141,7 @@ h4 {
 }
 
 /* cocktail create */
-.col-xs-5.content.create-form {
+.col-xs-5.content.create-form, .edit-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -213,9 +213,6 @@ textarea.new-cocktail.form-control {
 .parent{
   height: 700px;
   overflow: scroll;
-}
-.col-xs-6.view {
-
 }
 
 /* cocktail card  + user profile*/
