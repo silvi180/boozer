@@ -203,8 +203,6 @@ class Container extends Component {
 
   handleSearchSubmit = (e) => {
     e.preventDefault()
-    console.log('handling submit', e);
-
     this.setState({
       redirect: true
     })

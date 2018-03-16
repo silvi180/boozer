@@ -46,11 +46,7 @@ class App extends React.Component {
               <Route exact path="/signup" component={SignUp} />
             </React.Fragment>
           : ''}
-          {Object.keys(this.state.auth.currentUser).length ?
-            <Container
-              logout={this.handleLogout}
-              login={this.state.auth.currentUser}/>
-          : ''}
+          {Object.keys(this.state.auth.currentUser).length ? <Container logout={this.handleLogout} login={this.state.auth.currentUser}/> : ''}
 
         </div>
       </Router>
