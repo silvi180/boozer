@@ -37,6 +37,9 @@ p {
 .margin-left {
   margin-left: 10px;
 }
+.margin-top {
+  margin-top: 100px;
+}
 .form-control:focus {
   border: none;
   /* box-shadow: none; */
@@ -290,9 +293,20 @@ textarea.new-cocktail.form-control {
   text-align: left;
 }
 /* profile */
-.margin-top {
+.row.margin-top {
   margin-top: 100px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  box-shadow: 3px 7px 20px 1px rgba(64, 30, 30, 0.1);
+  padding: 100px 80px;
+  padding-bottom: 37px;
+  height:auto;
+  text-align: left;
 }
+.row.col-xs-12, .row.col-xs-12>.panel-heading {
+  padding-left: 0;
+}
+
 
 
 @media (min-width: 992px) {
