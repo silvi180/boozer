@@ -8,7 +8,7 @@ const Navbar = (props) => {
   }
 
   return (
-    <nav className="navbar-fixed-top">
+    <nav className="navbar-fixed-top" style={window.location.pathname === '/' ? {backgroundColor: 'white'} : {backgroundColor: '#f9f9f9'}}>
 
         <div className="navbar-header">
           <a className="navbar-brand"><span className="glyphicon glyphicon glyphicon-glass pull-left" style={drinkStyle}></span><span className="margin-left"></span>Boozer</a>

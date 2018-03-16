@@ -54,7 +54,7 @@ const MainContent = (props) => {
     )
   } else {
     return (
-      <div className="col-md-8">
+      <div className={window.location.pathname === '/profile' ? 'col-md-8' : 'display-one-item'}>
         <h2>{props.currentCocktail.name} </h2>
         <h4>Description:</h4>
           <p>{props.currentCocktail.description}</p>

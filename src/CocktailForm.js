@@ -87,7 +87,7 @@ const CocktailForm = ({ onChange, value = {proportions: []}, onSubmit }) => {
       amount: 0
     }])} className="glyphicon glyphicon-plus-sign"></span></h1>
     <NavLink
-      to="/search"
+      to="/show_cocktail"
       type="submit"
       onClick={() => onSubmit(value)}
       className="btn btn-default" >Create Cocktail</NavLink>

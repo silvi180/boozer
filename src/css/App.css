@@ -26,7 +26,6 @@ p {
   padding: 100px 80px;
   padding-bottom: 37px;
   margin-top: 150px;
-  /* margin-left: 100px; */
   text-align: center;
 }
 .btn-default {
@@ -97,6 +96,10 @@ form h3 {
   color: white;
   letter-spacing: 3px;
 }
+.sign.btn-default:focus, .btn.btn-default:focus {
+  outline: none;
+}
+
 /* signup form */
 /* .col-md-12.content {
   background-color: rgb(255, 255, 255);
@@ -115,7 +118,6 @@ form h3 {
   margin: auto;
   padding-top: 50px;
   padding-bottom: 20px;
-  background-color: #f9f9f9;
 }
 .nav>li>a:focus, .nav>li>a:hover {
   border-radius: 150px;
@@ -273,6 +275,19 @@ textarea.new-cocktail.form-control {
 /* cocktail card  + user profile*/
 .panel-heading {
   border-bottom: 1px solid rgb(211,211,211);
+}
+
+.display-one-item {
+  background-color: rgb(255, 255, 255);
+  border-radius: 2px;
+  box-shadow: 3px 7px 20px 1px rgba(64, 30, 30, 0.1);
+  padding: 100px 80px;
+  padding-bottom: 37px;
+  height:auto;
+  margin-top: 150px;
+  margin-left: 17%;
+  margin-right: 17%;
+  text-align: left;
 }
 /* profile */
 .margin-top {
