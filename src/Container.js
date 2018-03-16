@@ -25,6 +25,7 @@ class Container extends Component {
       ingredients: [],
       currentCocktail: '',
       show: false,
+      saved: false,
       searchTerm: '',
       drinkToEdit: '',
       redirect: false,
@@ -182,8 +183,7 @@ class Container extends Component {
 //working on functions below-----------
 
   handleSaveCocktail = (cocktail) => {
-    console.log('saving cocktail', cocktail);
-
+    this.setState({ saved: true });
     const data = {
       name: cocktail.name,
       description: cocktail.description,
@@ -195,6 +195,7 @@ class Container extends Component {
     }
     this.createSavedCocktail(data)
 
+    setTimeout(() => this.setState({ saved: false }), 4000 );
     // not using: proportions...so no ingredients
     // we may need to rethink this
 
@@ -276,7 +277,7 @@ class Container extends Component {
                   <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handleSearchSubmit} style={searchStyle} />
                   <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
                   <MainContent handleClose={this.handleClose} show={this.state.show} currentCocktail={this.state.currentCocktail} edit={this.editCocktail} saveCocktail={this.handleSaveCocktail} />
-                  <SavedDrinks drinks={this.state.user.saved_drinks}/>
+                  <SavedDrinks show={this.state.saved} saved={this.state.currentCocktail}/>
                 </div>
 
                  );

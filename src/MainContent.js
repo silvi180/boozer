@@ -22,9 +22,6 @@ const MainContent = (props) => {
   const hide = {
     display: 'none'
   }
-  console.log('main content', props.show)
-  console.log('main content', props.currentCocktail)
-
 
   if (window.location.pathname === '/search') {
     return (

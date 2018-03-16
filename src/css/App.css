@@ -235,7 +235,27 @@ textarea.new-cocktail.form-control {
 .padding-right {
   padding-right: 65px;
 }
+.popup-modal {
+  position: fixed;
+  bottom: 10vh;
+  right: 0;
+  margin-left: 32%;
+  margin-right: 32%;
+  background-color: rgba(0,0,0,.9);
+  color: white;
+  border-radius: 80px;
+  line-height: .1;
+  padding: 25px 15px;
+  width: 36%;
+  animation-name: saved;
+  animation-duration: 1s;
+  animation-direction: alternate;
+}
+@keyframes saved {
+    0%   {bottom: -17vh}
 
+    100% {bottom: 10vh}
+}
 /* cocktail card  + user profile*/
 .panel-heading {
   border-bottom: 1px solid rgb(211,211,211);
