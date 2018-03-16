@@ -13,7 +13,6 @@ import api from './services/api'
 import Navbar from './Navbar'
 import EditCocktailForm from './EditCocktailForm';
 import SavedDrinks from './SavedDrinks';
-import SavedDrinkView from './SavedDrinkView';
 
 
 class Container extends Component {
