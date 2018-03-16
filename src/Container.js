@@ -13,6 +13,7 @@ import api from './services/api'
 import Navbar from './Navbar'
 import EditCocktailForm from './EditCocktailForm';
 import SavedDrinks from './SavedDrinks';
+import SavedDrinkView from './SavedDrinkView';
 
 
 class Container extends Component {
@@ -295,19 +296,8 @@ class Container extends Component {
             <Route exact path="/profile" component={() => {
                 return(
                   <div className="row margin-top">
-                    <UserProfile
-                      user={this.state.user}
-                      selectSavedDrink={this.selectSavedDrink}
-                      removeSavedDrink={this.removeSavedDrink}
-                      editSavedDrink={this.handleUpdateCocktail}
-                      />
-                    <div className= "col-md-8">
-                      <MainContent
-                        currentCocktail={this.state.currentCocktail}
-                        edit={this.editCocktail}
-                        saveCocktail={this.handleSaveCocktail}
-                        />
-                    </div>
+                    <UserProfile user={this.state.user} selectSavedDrink={this.selectSavedDrink} removeSavedDrink={this.removeSavedDrink} editSavedDrink={this.handleUpdateCocktail}/>
+                    <MainContent handleClose={this.handleClose} show={this.state.show} currentCocktail={this.state.currentCocktail} edit={this.editCocktail} saveCocktail={this.handleSaveCocktail}/>
                   </div>
                 )
               }} />

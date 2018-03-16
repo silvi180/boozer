@@ -79,7 +79,7 @@ export default class SignUp extends Component {
               <input className="form-control" type="text" value={this.state.bio} name="bio" placeholder="Bio"/>
             </div>
             <NavLink
-              to="/login"
+              to="/"
               >Already a user? Sign In Instead</NavLink>
           </div>
       </form>
