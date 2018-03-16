@@ -9,7 +9,7 @@ const CocktailsContainer = (props) => {
   })
 
   return(
-    <div className="parent col-xs-3">
+    <div className="parent padding-right">
       { cocktails }
     </div>
   );

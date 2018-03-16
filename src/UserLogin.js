@@ -24,7 +24,7 @@ export default class Login extends React.Component {
         ...this.state.fields,
         [e.target.id]: e.target.value
       }
-    }, () => console.log(this.state.fields))
+    })
   }
 
   login = (e) => {
@@ -36,7 +36,7 @@ export default class Login extends React.Component {
 
   render () {
     return (
-      <div className="col-md-6 content background">
+      <div className="col-md-6 content margin-left">
         <form onChange={this.handleChange} onSubmit={this.login}>
           <h1>Boozer</h1>
           <h3>Sign In</h3>

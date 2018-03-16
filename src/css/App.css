@@ -26,7 +26,7 @@ p {
   padding: 100px 80px;
   padding-bottom: 37px;
   margin-top: 150px;
-  margin-left: 100px;
+  /* margin-left: 100px; */
   text-align: center;
 }
 .btn-default {
@@ -52,6 +52,9 @@ p {
 } */
 
 /* login form */
+.col-md-6.content.margin-left {
+  margin-left: 100px;
+}
 .sign.form-group {
   margin-bottom: 55px;
 }
@@ -211,7 +214,6 @@ h4 {
 .new-cocktail.form-control {
   padding-top: 10px;
   border: 1px solid #cecccc;
-  /* border-bottom: 1px solid #cecccc; */
   border-radius: 2px;
   box-shadow: inset 0px 0px 0px 0px #000000;
   text-align: left;
@@ -222,9 +224,16 @@ textarea.new-cocktail.form-control {
 }
 
 /* cocktail container */
-.parent{
-  height: 700px;
-  overflow: scroll;
+.container-fluid.content {
+  height: auto;
+  padding: 150px 170px;
+}
+.padding-right{
+  display: flex;
+  flex-direction: column;
+}
+.padding-right {
+  padding-right: 65px;
 }
 
 /* cocktail card  + user profile*/

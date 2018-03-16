@@ -24,6 +24,7 @@ class Container extends Component {
       cocktails: [],
       ingredients: [],
       currentCocktail: '',
+      show: false,
       searchTerm: '',
       drinkToEdit: '',
       redirect: false,
@@ -101,9 +102,12 @@ class Container extends Component {
 
   }
 
-
+  handleClose = () => {
+    this.setState({ show: false })
+  }
 // event handlers (mostly)
   handleClick = (id) => {
+    this.setState({ show: true })
     api.apiData.showDrink(id)
       .then(json => this.setState({ currentCocktail: json }));
   }
@@ -220,7 +224,7 @@ class Container extends Component {
 
   selectSavedDrink = drink => {
     this.setState({
-      currentCocktail: drink
+      currentCocktail: drink,
     })
   }
 
@@ -267,29 +271,13 @@ class Container extends Component {
               }
               />
             <Route exact path="/search" render={routerProps => {
-                 return(
-                   <div className="container-fluid content">
-                       <div className="navbar-form pull-right">
-                         <SearchBar
-                           handleSearch={this.handleSearch}
-                           searchTerm={this.state.searchTerm}
-                           submit={this.handleSearchSubmit}
-
-                           style={searchStyle}
-                           />
-                       </div>
-                       <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
-                       <div className="col-xs-6 view">
-                         <MainContent
-                           currentCocktail={this.state.currentCocktail}
-                           edit={this.editCocktail}
-                           saveCocktail={this.handleSaveCocktail}
-                           />
-                       </div>
-                       <div className="col-xs-3">
-                         <SavedDrinks drinks={this.state.user.saved_drinks}/>
-                       </div>
-                   </div>
+              return(
+                <div className="container-fluid content">
+                  <SearchBar handleSearch={this.handleSearch} searchTerm={this.state.searchTerm} submit={this.handleSearchSubmit} style={searchStyle} />
+                  <CocktailsContainer cocktails={this.state.searchTerm ? this.foundDrink(this.state.searchTerm) : []} handleClick={this.handleClick} />
+                  <MainContent handleClose={this.handleClose} show={this.state.show} currentCocktail={this.state.currentCocktail} edit={this.editCocktail} saveCocktail={this.handleSaveCocktail} />
+                  <SavedDrinks drinks={this.state.user.saved_drinks}/>
+                </div>
 
                  );
                }}
@@ -343,13 +331,11 @@ class Container extends Component {
           <Route exact path="/show_cocktail" render={() => {
                 return(
                   <div className="row margin-top">
-                    <div className= "col-md-8">
-                      <MainContent
-                        currentCocktail={this.state.currentCocktail}
-                        edit={this.editCocktail}
-                        saveCocktail={this.handleSaveCocktail}
-                        />
-                    </div>
+                    <MainContent
+                      currentCocktail={this.state.currentCocktail}
+                      edit={this.editCocktail}
+                      saveCocktail={this.handleSaveCocktail}
+                      />
                   </div>
                 );
               }}
