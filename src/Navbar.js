@@ -34,7 +34,7 @@ const Navbar = (props) => {
               exact
               ><span className="glyphicon glyphicon-user"></span>  {props.user ? props.user.firstname : "Loading..."} {props.user ? props.user.lastname : ""}</NavLink>
           </li>
-          <li onClick={props.logout}><a href="/"><span className="glyphicon glyphicon-log-in"></span> LogOut</a></li>
+          <li onClick={props.logout}><a href="/"><span className="glyphicon glyphicon-log-in"></span> Log out</a></li>
         </ul>
 
 
