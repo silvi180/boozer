@@ -256,7 +256,7 @@ textarea.new-cocktail.form-control {
 }
 .popup-modal {
   position: fixed;
-  bottom: 10vh;
+  bottom: 2vh;
   right: 0;
   margin-left: 32%;
   margin-right: 32%;
@@ -273,7 +273,7 @@ textarea.new-cocktail.form-control {
 @keyframes saved {
     0%   {bottom: -17vh}
 
-    100% {bottom: 10vh}
+    100% {bottom: 2vh}
 }
 /* cocktail card  + user profile*/
 .panel-heading {
@@ -307,6 +307,21 @@ textarea.new-cocktail.form-control {
   padding-left: 0;
 }
 
+.panel {
+  cursor: pointer;
+  transition: all 0.14s;
+}
+
+.panel .panel-body, .panel .panel-heading {
+  transition: background-color 0.3s;
+}
+
+.panel:hover .panel-body {
+  background: rgba(187, 221, 238, 0.2);
+}
+.panel:hover .panel-heading {
+  background: rgba(153, 187, 204, 0.3);
+}
 
 
 @media (min-width: 992px) {
