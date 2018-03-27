@@ -84,7 +84,6 @@ class Container extends Component {
   }
 
   handleUpdateUser = (user) => {
-    console.log('updating user', this.props.login);
     this.setState({
       user: this.props.login.user
     })
@@ -126,10 +125,8 @@ class Container extends Component {
   }
 
   foundDrink = (s) => {
-    console.log('this.state', this.state)
     const search = s.toUpperCase();
     const drinks = this.state.cocktails.filter( cocktail => (this.findByIngredient(search, cocktail.proportions) || cocktail.name.toUpperCase().includes(search)) )
-    console.log('founddrink', drinks)
     return drinks ? drinks : [];
   }
 
@@ -159,7 +156,6 @@ class Container extends Component {
   }
 // form submits 'saved_drink_name', but api expects 'name' - FIXED in UsersController
   handlePostCocktail = (fields) => {
-      console.log('about to post', fields);
       api.apiData.updateCurrentCocktail(fields)
         .then(resp => {
           this.setState({
@@ -176,7 +172,6 @@ class Container extends Component {
   };
 
   handleUpdateChange = (newValue) => {
-    console.log('handle update change');
     this.setState({drinkToEdit: newValue})
   }
 
@@ -196,9 +191,6 @@ class Container extends Component {
     this.createSavedCocktail(data)
 
     setTimeout(() => this.setState({ saved: false }), 4000 );
-    // not using: proportions...so no ingredients
-    // we may need to rethink this
-
   }
 
   handleSearchSubmit = (e) => {
@@ -209,7 +201,6 @@ class Container extends Component {
   }
 
   createSavedCocktail = (data) => {
-    console.log('saving data', data);
     fetch('http://localhost:3000/api/v1/saved_drinks', {
       method: 'POST',
       headers: {
@@ -228,7 +219,6 @@ class Container extends Component {
   }
 
   removeSavedDrink = (drinkId) => {
-    console.log('this is the drink to remove', drinkId);
     fetch(`http://localhost:3000/api/v1/saved_drinks/${drinkId}`, {
       method: 'DELETE'
     }).then(resp => resp.json())

@@ -33,8 +33,6 @@ class App extends React.Component {
   };
 
   render(){
-    console.log('App State', this.state.auth.currentUser);
-    //< Router basename "/boozer/"> why?
     return(
       <Router basename="/">
         <div className="container-fluid">
